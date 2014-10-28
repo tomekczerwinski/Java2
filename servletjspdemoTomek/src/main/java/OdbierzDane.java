@@ -121,21 +121,20 @@ public class OdbierzDane extends HttpServlet {
 		
 		body += "<ol>";
 		for(OsobaBaza osoba : sst.getAllPersons()){
-			body+="<li>"
+			body+="Osoba Numer: <li> Imie: "
 			+osoba.getName()
-			+"<li>"
+			+"<br/> Rok Urodzenia: "
 			+osoba.getRokUr()
-			+"<li>"
+			+"<br/> Plec: "
 			+osoba.getPlec()
-			+"<li>"
+			+"<br/> Hobby: "
 			+osoba.getHobby()
-			+"<li>"
+			+"<br/> Opis: "
 			+osoba.getOpis()
-			+"<li>"
+			+"<br/> Wyksztalcenie: "
 			+osoba.getWyksztalcenie()
-			+"<li>"
+			+"<br/> Prawo jazdy: "
 			+osoba.getPrawoJazdy()
-			+"<li>"
 			+"<br/><br/></body></html>";
 			
 		}
