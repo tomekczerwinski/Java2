@@ -89,6 +89,7 @@ public class OdbierzDane extends HttpServlet {
 		 String wyksztalcenie = request.getParameter("wyksztalcenie");
 		 
 		String body = "<html><body> Name: "
+				+ "<form action=\"/servletjspdemo/personForm\">"
 				+ imie
 				+ "<br/> Rok Urodzenia: "
 				+ rokUr
@@ -121,7 +122,7 @@ public class OdbierzDane extends HttpServlet {
 		
 		body += "<ol>";
 		for(OsobaBaza osoba : sst.getAllPersons()){
-			body+="Osoba Numer: <li> Imie: "
+			body+="<li> Imie: "
 			+osoba.getName()
 			+"<br/> Rok Urodzenia: "
 			+osoba.getRokUr()
@@ -134,10 +135,12 @@ public class OdbierzDane extends HttpServlet {
 			+"<br/> Wyksztalcenie: "
 			+osoba.getWyksztalcenie()
 			+"<br/> Prawo jazdy: "
-			+osoba.getPrawoJazdy()
-			+"<br/><br/></body></html>";
+			+osoba.getPrawoJazdy();
+			
 			
 		}
+		body += "<br/><br/> <input type =\"submit\" value=\"Powrot\" />"
+				+"<br/><br/></body></html>";
 		
 		writer.println(body);
 		writer.close();
