@@ -21,23 +21,25 @@ import com.example.servletjspdemo.domain.Person;
 public class OdbierzDane extends HttpServlet {
 	//StorageServiceTomek sst = new StorageServiceTomek();
 	//StorageServiceTomek sst = getServletContext().getAttribute("sesja");
-	StorageServiceTomek sst = (StorageServiceTomek) getServletContext().getAttribute("MojaOsoba");
+	
 	
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		if(request.getSession().getAttribute("MojaOsoba") == null){
-			request.getSession().setAttribute("MojaOsoba", new OsobaBaza());
+		StorageServiceTomek sst = (StorageServiceTomek) getServletContext().getAttribute("baza");
+		
+		if(request.getSession().getAttribute("osoba") == null){
+			request.getSession().setAttribute("osoba", new OsobaBaza());
 			
 			
 		}
 		
-		OsobaBaza p = (OsobaBaza) request.getSession().getAttribute("MojaOsoba");
+		OsobaBaza osoba = (OsobaBaza) request.getSession().getAttribute("osoba");
 		response.setContentType("text/html");
-		HttpSession session = request.getSession(); 
-		ServletContext context = request.getSession().getServletContext();
+		//HttpSession session = request.getSession(); 
+		//ServletContext context = request.getSession().getServletContext();
 		PrintWriter writer = response.getWriter();
 		 String plec = null;
 		 
@@ -140,8 +142,8 @@ public class OdbierzDane extends HttpServlet {
 				+ wyksztalcenie
 				+ "<br/> Prawo Jazdy: "
 				+ selectedPrawko
-				+ "<br/><br/>"
-				+"Session id: " + session.getId() + "<br/>";
+				+ "<br/><br/>";
+				//+"Session id: " + session.getId() + "<br/>";
 
 		
 	
@@ -152,18 +154,18 @@ public class OdbierzDane extends HttpServlet {
 		
 		//OsobaBaza p = new OsobaBaza();
 
-		sst.add(p);
-		sst.getAllPersons();
+		
+		//sst.getAllPersons();
 		
 		
-		p.setName(imie);
-		p.setHobby(selectedHobby);
-		p.setOpis(opis);
-		p.setPlec(plec);
-		p.setRokUr(rokUr);
-		p.setWyksztalcenie(wyksztalcenie);
-		p.setPrawoJazdy(selectedPrawko);
-		
+		osoba.setName(imie);
+		osoba.setHobby(selectedHobby);
+		osoba.setOpis(opis);
+		osoba.setPlec(plec);
+		osoba.setRokUr(rokUr);
+		osoba.setWyksztalcenie(wyksztalcenie);
+		osoba.setPrawoJazdy(selectedPrawko);
+		sst.add(osoba);
 		body += "<ol>";
 		for(int j=0;j<sst.size();j++){
 			body+="<li> Imie: "
@@ -179,7 +181,7 @@ public class OdbierzDane extends HttpServlet {
 			+"<br/> Wyksztalcenie: "
 			+sst.getAllPersons().get(j).getWyksztalcenie()
 			+"<br/> Prawo jazdy: "
-			+sst.getAllPersons().get(j).getWyksztalcenie();
+			+sst.getAllPersons().get(j).getPrawoJazdy();
 			
 			
 		}
@@ -193,9 +195,9 @@ public class OdbierzDane extends HttpServlet {
 	}
 		@Override
 		public void init() throws ServletException {
-			if(getServletContext().getAttribute("MojaOsoba") == null)
+			if(getServletContext().getAttribute("baza") == null)
 			{
-				getServletContext().setAttribute("MojaOsoba", new StorageServiceTomek());
+				getServletContext().setAttribute("baza", new StorageServiceTomek());
 			}
 		}
 		

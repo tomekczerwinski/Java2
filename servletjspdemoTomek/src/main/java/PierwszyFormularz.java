@@ -15,24 +15,24 @@ public class PierwszyFormularz extends HttpServlet {
 @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 		throws ServletException, IOException{
-			PrintWriter writer = response.getWriter();
 			
-			if(request.getSession().getAttribute("MojaOsoba") == null){
-				request.getSession().setAttribute("MojaOsoba", new OsobaBaza());
+			
+			if(request.getSession().getAttribute("osoba") == null){
+				request.getSession().setAttribute("osoba", new OsobaBaza());
 				
 				
 			}
 			
-			OsobaBaza osoba = (OsobaBaza) request.getSession().getAttribute("MojaOsoba");
-			
+			OsobaBaza osoba = (OsobaBaza) request.getSession().getAttribute("osoba");
+			PrintWriter writer = response.getWriter();
 			writer.write("<html>"
 					+ "<body>"
 					+ "<h2>"
 					+ "HelloWord"
 					+ "</h2>"
 					+ "<form action=\"/servletjspdemo/personFormData\">"
-					+	"Imie: <input type =\"text\" name=\"imie\" />"
-					+	"<br> rokUr: <input type =\"int\" name=\"rokur\" />"
+					+	"Imie: <input type =\"text\" name=\"imie\"" + osoba.getName() + " />"
+					+	"<br> rokUr: <input type =\"int\" name=\"rokur\"" + osoba.getRokUr() + " />"
 					+ 	"<br> Plec: <input type =\"radio\" name=\"plec\" value=\"M\" /> M"
 					+ 	"<input type =\"radio\" name=\"plec\" value=\"K\" /> K"
 					+	"<br> Hobby: <br> <input type =\"checkbox\" name=\"hobby\" value=\"Ksiazki\" /> Ksiazki"
