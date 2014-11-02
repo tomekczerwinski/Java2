@@ -17,6 +17,13 @@ public class PierwszyFormularz extends HttpServlet {
 		throws ServletException, IOException{
 			PrintWriter writer = response.getWriter();
 			
+			if(request.getSession().getAttribute("MojaOsoba") == null){
+				request.getSession().setAttribute("MojaOsoba", new OsobaBaza());
+				
+				
+			}
+			
+			OsobaBaza osoba = (OsobaBaza) request.getSession().getAttribute("MojaOsoba");
 			
 			writer.write("<html>"
 					+ "<body>"

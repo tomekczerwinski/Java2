@@ -16,5 +16,10 @@ public class StorageServiceTomek {
 	public List<OsobaBaza> getAllPersons(){
 		return db;
 	}
+	
+	public int size()
+		{
+			return db.size();
+		}
 
 }

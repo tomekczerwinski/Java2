@@ -5,11 +5,13 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.Response;
 
 import com.example.servletjspdemo.domain.Person;
@@ -17,13 +19,25 @@ import com.example.servletjspdemo.domain.Person;
 @WebServlet(urlPatterns = "/personFormData")
 
 public class OdbierzDane extends HttpServlet {
-	StorageServiceTomek sst = new StorageServiceTomek();
-
+	//StorageServiceTomek sst = new StorageServiceTomek();
+	//StorageServiceTomek sst = getServletContext().getAttribute("sesja");
+	StorageServiceTomek sst = (StorageServiceTomek) getServletContext().getAttribute("MojaOsoba");
 	
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		if(request.getSession().getAttribute("MojaOsoba") == null){
+			request.getSession().setAttribute("MojaOsoba", new OsobaBaza());
+			
+			
+		}
+		
+		OsobaBaza p = (OsobaBaza) request.getSession().getAttribute("MojaOsoba");
 		response.setContentType("text/html");
+		HttpSession session = request.getSession(); 
+		ServletContext context = request.getSession().getServletContext();
 		PrintWriter writer = response.getWriter();
 		 String plec = null;
 		 
@@ -60,8 +74,10 @@ public class OdbierzDane extends HttpServlet {
 				}*/
 				
 		String selectedHobby = "";
+		if(request.getParameter("hobby") != null){
 				for (String hobby : request.getParameterValues("hobby")) {
 					selectedHobby += hobby + " ";
+					}
 				}
 		String selectedPrawko = "";
 		
@@ -83,10 +99,31 @@ public class OdbierzDane extends HttpServlet {
              }
 		 }
 		 
-		 String imie = request.getParameter("imie");
-		 int rokUr = Integer.parseInt(request.getParameter("rokur"));
-		 String opis = request.getParameter("opis");
-		 String wyksztalcenie = request.getParameter("wyksztalcenie");
+		 String imie = null;
+		 imie = request.getParameter("imie");
+		 int rokUr = 0;
+		 if(request.getParameter("rokur") != null) {
+			 	rokUr = Integer.parseInt(request.getParameter("rokur"));
+		 	}
+		 String opis = null;
+		 if(request.getParameter("opis") != null) {
+		 opis = request.getParameter("opis");
+		 	}
+		 String wyksztalcenie = null;
+		 if(request.getParameter("wyksztalcenie") != null) {
+			 	wyksztalcenie = request.getParameter("wyksztalcenie");
+		 	}
+		 
+		 /*
+		 context.setAttribute("imie", imie);
+		 context.setAttribute("rokUr", rokUr);
+		 context.setAttribute("plec", plec);
+		 context.setAttribute("hobby", selectedHobby);
+		 context.setAttribute("opis", opis);
+		 context.setAttribute("wyksztalcenie", wyksztalcenie);
+		 context.setAttribute("selectedPrawko", selectedPrawko);
+		 */
+
 		 
 		String body = "<html><body> Name: "
 				+ "<form action=\"/servletjspdemo/personForm\">"
@@ -103,15 +140,22 @@ public class OdbierzDane extends HttpServlet {
 				+ wyksztalcenie
 				+ "<br/> Prawo Jazdy: "
 				+ selectedPrawko
-				+ "<br/><br/>";
+				+ "<br/><br/>"
+				+"Session id: " + session.getId() + "<br/>";
 
 		
 	
 		
 		
-		OsobaBaza p = new OsobaBaza();
+		
+		
+		
+		//OsobaBaza p = new OsobaBaza();
+
 		sst.add(p);
 		sst.getAllPersons();
+		
+		
 		p.setName(imie);
 		p.setHobby(selectedHobby);
 		p.setOpis(opis);
@@ -121,21 +165,21 @@ public class OdbierzDane extends HttpServlet {
 		p.setPrawoJazdy(selectedPrawko);
 		
 		body += "<ol>";
-		for(OsobaBaza osoba : sst.getAllPersons()){
+		for(int j=0;j<sst.size();j++){
 			body+="<li> Imie: "
-			+osoba.getName()
+			+sst.getAllPersons().get(j).getName()
 			+"<br/> Rok Urodzenia: "
-			+osoba.getRokUr()
+			+sst.getAllPersons().get(j).getRokUr()
 			+"<br/> Plec: "
-			+osoba.getPlec()
+			+sst.getAllPersons().get(j).getPlec()
 			+"<br/> Hobby: "
-			+osoba.getHobby()
+			+sst.getAllPersons().get(j).getHobby()
 			+"<br/> Opis: "
-			+osoba.getOpis()
+			+sst.getAllPersons().get(j).getOpis()
 			+"<br/> Wyksztalcenie: "
-			+osoba.getWyksztalcenie()
+			+sst.getAllPersons().get(j).getWyksztalcenie()
 			+"<br/> Prawo jazdy: "
-			+osoba.getPrawoJazdy();
+			+sst.getAllPersons().get(j).getWyksztalcenie();
 			
 			
 		}
@@ -147,6 +191,14 @@ public class OdbierzDane extends HttpServlet {
 		
 		
 	}
+		@Override
+		public void init() throws ServletException {
+			if(getServletContext().getAttribute("MojaOsoba") == null)
+			{
+				getServletContext().setAttribute("MojaOsoba", new StorageServiceTomek());
+			}
+		}
+		
 	
 
 }
