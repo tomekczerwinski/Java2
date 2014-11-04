@@ -1,12 +1,12 @@
 
 public class OsobaBaza {
-	private String imie = "unknown";
-	private int rokUr = 1900;
-	private String plec = "unknown";
-	private String hobby = "unknown";
-	private String opis = "unknown";
-	private String wyksztalcenie = "unknown";
-	private String prawoJazdy = "unknown";
+	private String imie = "";
+	private int rokUr =0;
+	private String plec = "";
+	private String hobby = "";
+	private String opis = "";
+	private String wyksztalcenie = "";
+	private String prawoJazdy = "";
 	
 	
 	public OsobaBaza() {

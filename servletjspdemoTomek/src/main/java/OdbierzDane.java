@@ -27,20 +27,19 @@ public class OdbierzDane extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		PrintWriter writer = response.getWriter();
 		
 		StorageServiceTomek sst = (StorageServiceTomek) getServletContext().getAttribute("baza");
 		
 		if(request.getSession().getAttribute("osoba") == null){
-			request.getSession().setAttribute("osoba", new OsobaBaza());
-			
-			
+			request.getSession().setAttribute("osoba", new OsobaBaza());	
 		}
 		
 		OsobaBaza osoba = (OsobaBaza) request.getSession().getAttribute("osoba");
-		response.setContentType("text/html");
+		//response.setContentType("text/html");
 		//HttpSession session = request.getSession(); 
 		//ServletContext context = request.getSession().getServletContext();
-		PrintWriter writer = response.getWriter();
+		
 		 String plec = null;
 		 
 		 
@@ -128,7 +127,7 @@ public class OdbierzDane extends HttpServlet {
 
 		 
 		String body = "<html><body> Name: "
-				+ "<form action=\"/servletjspdemo/personForm\">"
+			//	+ "<form action=\"/servletjspdemo/personForm\">"
 				+ imie
 				+ "<br/> Rok Urodzenia: "
 				+ rokUr
@@ -185,8 +184,8 @@ public class OdbierzDane extends HttpServlet {
 			
 			
 		}
-		body += "<br/><br/> <input type =\"submit\" value=\"Powrot\" />"
-				+"<br/><br/></body></html>";
+		body += //"<br/><br/> <input type =\"submit\" value=\"Powrot\" />"
+				"<br/><br/></body></html>";
 		
 		writer.println(body);
 		writer.close();
