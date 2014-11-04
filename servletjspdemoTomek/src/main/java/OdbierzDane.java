@@ -127,7 +127,7 @@ public class OdbierzDane extends HttpServlet {
 
 		 
 		String body = "<html><body> Name: "
-			//	+ "<form action=\"/servletjspdemo/personForm\">"
+				+ "<form action=\"/servletjspdemo/personForm\">"
 				+ imie
 				+ "<br/> Rok Urodzenia: "
 				+ rokUr
@@ -184,8 +184,8 @@ public class OdbierzDane extends HttpServlet {
 			
 			
 		}
-		body += //"<br/><br/> <input type =\"submit\" value=\"Powrot\" />"
-				"<br/><br/></body></html>";
+		body += "<br/><br/> <input type =\"submit\" value=\"Powrot\" />"
+				+"<br/><br/></body></html>";
 		
 		writer.println(body);
 		writer.close();

@@ -77,7 +77,7 @@ public class PierwszyFormularz extends HttpServlet {
 			if(ksiazki==1) writer.println("Hobby: <br><input type=\"checkbox\" name=\"hobby\" value=\"Ksiazki\" checked>Ksiazki<br> ");
 			else writer.println("Hobby: <br><input type=\"checkbox\" name=\"hobby\" value=\"Ksiazki\">Ksiazki<br> ");
 			if(plywanie==1) writer.println("<input type=\"checkbox\" name=\"hobby\" value=\"Plywanie\" checked> Plywanie<br>");      
-			else writer.println("<input type=\"radio\" name=\"checkbox\" value=\"Plywanie\"> Plywanie<br>"); 
+			else writer.println("<input type=\"checkbox\" name=\"hobby\" value=\"Plywanie\"> Plywanie<br>"); 
 			
 		
 			

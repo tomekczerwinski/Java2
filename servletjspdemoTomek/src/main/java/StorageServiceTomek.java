@@ -10,7 +10,7 @@ public class StorageServiceTomek {
 	
 	public void add(OsobaBaza osoba){
 		OsobaBaza nowaOsoba = new OsobaBaza(osoba.getName(), osoba.getRokUr(),osoba.getPlec(), osoba.getHobby(), osoba.getOpis(), osoba.getWyksztalcenie(), osoba.getPrawoJazdy());
-		db.add(osoba);
+		db.add(nowaOsoba);
 	}
 	
 	public List<OsobaBaza> getAllPersons(){
