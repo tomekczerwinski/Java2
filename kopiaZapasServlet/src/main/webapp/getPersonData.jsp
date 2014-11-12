@@ -8,13 +8,13 @@
 </head>
 <body>
 
-<jsp:useBean id="storage" class="com.example.servletjspdemo.service.StorageService" scope="application" />
-<jsp:useBean id="person" class="com.example.servletjspdemo.domain.Person" scope="session" />
+<jsp:useBean id="storage" class="com.example.servletjspdemo.service.StorageServiceTomek" scope="application" />
+<jsp:useBean id="person" class="com.example.servletjspdemo.domain.Game" scope="session" />
 
 <form action="addPerson.jsp">
 
-  First name :<input type="text" name="firstName" value="${person.firstName}" /><br />
-  Year of birth :<input type="text"  name="yob" value="${person.yob}" /><br />
+
+  Year of birth :<input type="text"  name="rokUr" value="${person.rokUr}" /><br />
   <input type="submit" value=" OK ">
   
 </form>

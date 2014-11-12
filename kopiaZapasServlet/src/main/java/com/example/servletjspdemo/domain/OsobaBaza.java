@@ -1,3 +1,4 @@
+package com.example.servletjspdemo.domain;
 
 public class OsobaBaza {
 	private String imie = "";
@@ -8,7 +9,7 @@ public class OsobaBaza {
 	private String wyksztalcenie = "";
 	private String prawoJazdy = "";
 	
-	
+
 	public OsobaBaza() {
 		super();
 	}

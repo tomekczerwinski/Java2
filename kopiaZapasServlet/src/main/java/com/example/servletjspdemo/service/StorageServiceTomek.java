@@ -1,6 +1,8 @@
+package com.example.servletjspdemo.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.servletjspdemo.domain.OsobaBaza;
 import com.example.servletjspdemo.domain.Person;
 
 
