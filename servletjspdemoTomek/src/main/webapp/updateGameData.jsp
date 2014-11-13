@@ -12,13 +12,26 @@
 <jsp:useBean id="game" class="com.example.servletjspdemo.domain.Game" scope="session" />
 
 <form action="gameData">
-
+	<% int ID = Integer.parseInt(request.getParameter("userId")); 
+	//baza.showUpdate(ID);
+	
+	//for (com.example.servletjspdemo.domain.Game game : baza.getAllGames()) {
+		baza.showUpdate(ID);
+		
+		//game.getName();
+		//game.getDataWydania();
+		//game.getCena();
+		//game.getDystrybutor();
+		//game.getPlatforma();%>
+	
   Name :<input type="text"  name="name" value="${game.name}" /><br />
   Dystrybutor :<input type="text"  name="dystrybutor" value="${game.dystrybutor}" /><br />
   Data Wydania :<input type="int"  name="dataWydania" value="${game.dataWydania}" /><br />
   Platforma :<input type="text"  name="platforma" value="${game.platforma}" /><br />
   Cena :<input type="int"  name="cena" value="${game.cena}" /><br />
-  <input type="hidden"  name="id" value="${game.id}" /><br />
+  <input type="hidden"  name="id" value="${ID}" /><br />
+  
+
   
   <input type="submit" value=" OK ">
   
