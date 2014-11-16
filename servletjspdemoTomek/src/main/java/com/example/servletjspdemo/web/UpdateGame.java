@@ -77,9 +77,11 @@ public class UpdateGame extends HttpServlet {
          
 		 
 		 String body = "<html><body> ID: " + ID;
-		 game.setName(name);
-		 game.setDataWydania(dataWydania);
 		 sst.update2(game,ID);
+		 game.setName(name);
+		game.setDataWydania(dataWydania);
+		game.setId(ID);
+		 
 
 		
 		body += ""

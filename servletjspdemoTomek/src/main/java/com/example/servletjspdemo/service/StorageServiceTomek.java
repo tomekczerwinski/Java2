@@ -73,6 +73,7 @@ public class StorageServiceTomek {
 		
 		if(db.get(i).id == id)
 			db.set(i, game);
+			//return;
 		
 	}
 	

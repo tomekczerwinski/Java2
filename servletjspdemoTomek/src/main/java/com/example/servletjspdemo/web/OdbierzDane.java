@@ -167,10 +167,10 @@ public class OdbierzDane extends HttpServlet {
 		
 		
 		
-		 int id = 0;
-		 if(request.getParameter("id") != null) {
-			 	dataWydania = Integer.parseInt(request.getParameter("id"));
-		 	}
+		// int id = 0;
+		// if(request.getParameter("id") != null) {
+			 //	dataWydania = Integer.parseInt(request.getParameter("id"));
+		// 	}
 		
 		//OsobaBaza p = new OsobaBaza();
 
@@ -183,7 +183,7 @@ public class OdbierzDane extends HttpServlet {
 		game.setCena(cena);
 		game.setDystrybutor(dystrybutor);
 		game.setDataWydania(dataWydania);
-		game.setId(id);
+		game.setId(game.id);
 		
 		sst.add(game);
 		game.id++;

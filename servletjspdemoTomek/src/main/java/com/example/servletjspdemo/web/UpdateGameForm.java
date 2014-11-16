@@ -86,7 +86,7 @@ public class UpdateGameForm extends HttpServlet {
 				+	"Naza: <input type =\"text\" name=\"name\"value=\"" + game.getName() +"\"  />"
 				+	"Data Wydania: <input type =\"text\" name=\"dataWydania\"value=\"" + game.getDataWydania() +"\"  />"
 				+	"<input type =\"hidden\" name=\"id\"value=\"" + ID +"\"  />"
-				+ "<br/><br/> <input type =\"submit\" value=\"Powrot\" />"
+				+ "<br/><br/> <input type =\"submit\" value=\"Update\" />"
 				+"<br/><br/></body></html>";
 		
 		writer.println(body);
