@@ -9,6 +9,7 @@ public class Game {
 	private String dystrybutor = "";
 	private String platforma = "";
 	private float cena =0;
+	public static int lastID = 0;
 
 	
 

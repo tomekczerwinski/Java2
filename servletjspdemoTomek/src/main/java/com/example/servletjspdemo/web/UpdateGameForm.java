@@ -77,14 +77,20 @@ public class UpdateGameForm extends HttpServlet {
          
 		 
 		 String body = "<html><body> ID: " + ID;
-		 
+		 /*
+		 Game newGame = new Game();
 		 sst.update(ID);
-
+			newGame.setName(name);
+			
+			newGame.setCena(cena);
+			newGame.setDystrybutor(dystrybutor);
+			newGame.setDataWydania(dataWydania);
+*/
 		
 		body += ""
 				+ "<form action=\"/servletjspdemo/updateGame\"; method=\"get\">"
-				+	"Naza: <input type =\"text\" name=\"name\"value=\"" + game.getName() +"\"  />"
-				+	"Data Wydania: <input type =\"text\" name=\"dataWydania\"value=\"" + game.getDataWydania() +"\"  />"
+				+	"Naza: <input type =\"text\" name=\"name\"value=\"" + name +"\"  />"
+				+	"Data Wydania: <input type =\"text\" name=\"dataWydania\"value=\"" + dataWydania +"\"  />"
 				+	"<input type =\"hidden\" name=\"id\"value=\"" + ID +"\"  />"
 				+ "<br/><br/> <input type =\"submit\" value=\"Update\" />"
 				+"<br/><br/></body></html>";

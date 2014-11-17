@@ -76,15 +76,28 @@ public class UpdateGame extends HttpServlet {
 		 int ID = Integer.parseInt(request.getParameter("id"));
          
 		 
-		 String body = "<html><body> ID: " + ID;
-		 sst.update2(game,ID);
-		 game.setName(name);
-		game.setDataWydania(dataWydania);
-		game.setId(ID);
+		 String body = "<html><body> ID: " + ID + " ID 2: "+ game.id;
 		 
-
+		// sst.delete(ID);
+		 
+		 Game newGame = new Game();
+		 
+		 newGame.setName(name);
+		 newGame.setDataWydania(dataWydania);
+		 newGame.setId(ID);
+		
+		
+		
+		body+="game id: "+ newGame.getId();
+		body+="game id ktore idzie tam: "+ newGame.id;
+		body+="game data: "+ newGame.getDataWydania();
+		body+="game name: "+ newGame.getName();
+		
+		
+		sst.update2(newGame,ID);
 		
 		body += ""
+				+"ID: " + ID + " ID 2: "+ game.id
 				+ "<form action=\"/servletjspdemo/showAllGames.jsp\"; method=\"get\">"
 				+ "<br/><br/> <input type =\"submit\" value=\"Powrot\" />"
 				+"<br/><br/></body></html>";

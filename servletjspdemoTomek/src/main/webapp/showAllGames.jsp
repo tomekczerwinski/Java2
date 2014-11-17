@@ -60,7 +60,7 @@
 		//out.println("<td>");
 
 		out.println("<td><a href=\"deleteGame?userId="+String.valueOf(game.getId())+"\">Usun</a></td>	</tr>");
-		out.println("<td><a href=\"updateGameForm?userId="+String.valueOf(game.getId())+"\">Update</a></td>	</tr>");
+		out.println("<td><a href=\"updateGameForm?userId="+String.valueOf(game.getId())+"&name="+String.valueOf(game.getName())+"&dataWydania="+String.valueOf(game.getDataWydania())+"\">Update</a></td>	</tr>");
 	}
 		
 

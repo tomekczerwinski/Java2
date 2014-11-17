@@ -30,6 +30,7 @@ public class OdbierzDane extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		PrintWriter writer = response.getWriter();
 		
 		StorageServiceTomek sst = (StorageServiceTomek) getServletContext().getAttribute("baza");
@@ -174,19 +175,20 @@ public class OdbierzDane extends HttpServlet {
 		
 		//OsobaBaza p = new OsobaBaza();
 
-		
+		Game newGame = new Game();
+
 		//sst.getAllPersons();
+
 		
+		newGame.setName(name);
+		newGame.setPlatforma(selectedPlatforma);
+		newGame.setCena(cena);
+		newGame.setDystrybutor(dystrybutor);
+		newGame.setDataWydania(dataWydania);
+		newGame.setId(Game.lastID);
 		
-		game.setName(name);
-		game.setPlatforma(selectedPlatforma);
-		game.setCena(cena);
-		game.setDystrybutor(dystrybutor);
-		game.setDataWydania(dataWydania);
-		game.setId(game.id);
-		
-		sst.add(game);
-		game.id++;
+		sst.add(newGame);
+		Game.lastID++;
 		
 		
 		/*body += "<ol>";

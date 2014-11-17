@@ -14,7 +14,7 @@ public class StorageServiceTomek {
 	private List<Game> db = new ArrayList<Game>();
 	
 	public void add(Game game){
-		Game newGame = new Game( game.getDataWydania(), game.getId(), game.getName(), game.getName(), game.getDystrybutor(), game.getPlatforma(), game.getCena());
+		Game newGame = new Game( game.getDataWydania(), Game.lastID, game.getName(), game.getName(), game.getDystrybutor(), game.getPlatforma(), game.getCena());
 		
 		db.add(newGame);
 		
@@ -56,8 +56,8 @@ public class StorageServiceTomek {
 			i++;
 		
 		if(db.get(i).id == id)
-			//db.get(i);
-			return;
+			db.get(id);
+			//return;
 		
 		
 		
@@ -71,8 +71,10 @@ public class StorageServiceTomek {
 		while(db.get(i).id != id)
 			i++;
 		
-		if(db.get(i).id == id)
+		if(db.get(i).id == id){
 			db.set(i, game);
+			
+		}
 			//return;
 		
 	}

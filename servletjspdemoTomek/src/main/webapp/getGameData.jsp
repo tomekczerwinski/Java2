@@ -11,6 +11,7 @@
 <jsp:useBean id="baza" class="com.example.servletjspdemo.service.StorageServiceTomek" scope="application" />
 <jsp:useBean id="game" class="com.example.servletjspdemo.domain.Game" scope="session" />
 
+
 <form action="gameData">
 
   Name :<input type="text"  name="name" value="${game.name}" /><br />
@@ -18,7 +19,7 @@
   Data Wydania :<input type="int"  name="dataWydania" value="${game.dataWydania}" /><br />
   Platforma :<input type="text"  name="platforma" value="${game.platforma}" /><br />
   Cena :<input type="int"  name="cena" value="${game.cena}" /><br />
-  <input type="hidden"  name="id" value="${game.id}" /><br />
+ 
   
   <input type="submit" value=" OK ">
   
