@@ -6,18 +6,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css">
+<title>Add</title>
 </head>
 <body>
 <table border=1>
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Nazwa</th>
                 <th>Dystrybutor</th>
                 <th>Data Wydania</th>
                 <th>Platforma</th>
                 <th>Cena</th>
-                <th colspan=2>Action</th>
+                <th colspan=2>Akcja</th>
             </tr>
         </thead>
 <jsp:useBean id="baza" class="com.example.servletjspdemo.service.StorageServiceTomek" scope="application" />
@@ -55,18 +56,17 @@
 		</td>
 				
 		<%
-		//out.println("<p>" + game.getId() + "</p>");
-		
-		//out.println("<td>");
+	
 
-		out.println("<td><a href=\"deleteGame?userId="+String.valueOf(game.getId())+"\">Usun</a></td>	</tr>");
-		out.println("<td><a href=\"updateGameForm?userId="+String.valueOf(game.getId())+"&name="+String.valueOf(game.getName())+"&dataWydania="+String.valueOf(game.getDataWydania())+"\">Update</a></td>	</tr>");
+		out.println("<td><a href=\"deleteGame?userId="+String.valueOf(game.getId())+"\">Usun</a></td>");
+		out.println("<td><a href=\"updateGameForm?userId="+String.valueOf(game.getId())+"&name="+String.valueOf(game.getName())+"&dataWydania="+Integer.valueOf(game.getDataWydania())+"&dystrybutor="+String.valueOf(game.getDystrybutor())+"&platforma="+String.valueOf(game.getPlatforma())+"&cena="+Float.valueOf(game.getCena())+"\">Update</a></td>	</tr>");
 	}
 		
 
 		%>
 <p>
-  <a href="getGameData.jsp">Add another person</a>
+  <a href="getGameData.jsp">Dodaj nowa gre</a> <br />
+   <a href="index.jsp">Powrot na strone glowna</a>
 </p>
 
 </body>

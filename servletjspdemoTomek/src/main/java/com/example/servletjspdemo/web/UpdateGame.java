@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.Response;
 
 import com.example.servletjspdemo.domain.Game;
-import com.example.servletjspdemo.domain.Person;
 import com.example.servletjspdemo.service.StorageServiceTomek;
 
 @WebServlet(urlPatterns = "/updateGame")
@@ -40,19 +39,19 @@ public class UpdateGame extends HttpServlet {
 		
 		Game game = (Game) request.getSession().getAttribute("gra");
 
-		 
-		 
 
-
-		 
 		 String name = null;
 		 name = request.getParameter("name");
 		 
 		 String dystrybutor = null;
 		 dystrybutor = request.getParameter("dystrybutor");
 		 
-		 String platforma = null;
-		 platforma = request.getParameter("platforma");
+		 String selectedPlatforma = "";
+			if(request.getParameter("platforma") != null){
+					for (String platforma : request.getParameterValues("platforma")) {
+						selectedPlatforma += platforma + " ";
+						}
+					}
 		 
 		 int dataWydania = 0;
 		 if(request.getParameter("dataWydania") != null) {
@@ -63,41 +62,25 @@ public class UpdateGame extends HttpServlet {
 			 	cena = Float.parseFloat(request.getParameter("cena"));
 		 	}
 
-		 
-		 /*
-		 context.setAttribute("imie", imie);
-		 context.setAttribute("rokUr", rokUr);
-		 context.setAttribute("plec", plec);
-		 context.setAttribute("hobby", selectedHobby);
-		 context.setAttribute("opis", opis);
-		 context.setAttribute("wyksztalcenie", wyksztalcenie);
-		 context.setAttribute("selectedPrawko", selectedPrawko);
-		 */
 		 int ID = Integer.parseInt(request.getParameter("id"));
          
 		 
-		 String body = "<html><body> ID: " + ID + " ID 2: "+ game.id;
-		 
-		// sst.delete(ID);
-		 
+		 String body = "<html><body><head><link rel=\"stylesheet\" type=\"text/css\" href=\"dist/css/bootstrap.css\"></head><title>Update</title> Rekord zostal zmieniony!" ;
+
 		 Game newGame = new Game();
 		 
-		 newGame.setName(name);
-		 newGame.setDataWydania(dataWydania);
-		 newGame.setId(ID);
-		
-		
-		
-		body+="game id: "+ newGame.getId();
-		body+="game id ktore idzie tam: "+ newGame.id;
-		body+="game data: "+ newGame.getDataWydania();
-		body+="game name: "+ newGame.getName();
+			newGame.setName(name);
+			newGame.setPlatforma(selectedPlatforma);
+			newGame.setCena(cena);
+			newGame.setDystrybutor(dystrybutor);
+			newGame.setDataWydania(dataWydania);
+			newGame.setId(ID);
+
 		
 		
 		sst.update2(newGame,ID);
 		
 		body += ""
-				+"ID: " + ID + " ID 2: "+ game.id
 				+ "<form action=\"/servletjspdemo/showAllGames.jsp\"; method=\"get\">"
 				+ "<br/><br/> <input type =\"submit\" value=\"Powrot\" />"
 				+"<br/><br/></body></html>";

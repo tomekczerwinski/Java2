@@ -6,7 +6,6 @@ import java.util.List;
 import javax.faces.component.UpdateModelException;
 
 import com.example.servletjspdemo.domain.Game;
-import com.example.servletjspdemo.domain.Person;
 
 
 public class StorageServiceTomek {

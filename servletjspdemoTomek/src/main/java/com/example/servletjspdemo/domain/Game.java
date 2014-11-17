@@ -11,6 +11,7 @@ public class Game {
 	private float cena =0;
 	public static int lastID = 0;
 
+
 	
 
 	public Game() {
@@ -70,6 +71,7 @@ public class Game {
 	public void setCena(float cena) {
 		this.cena = cena;
 	}
+
 
 
 }

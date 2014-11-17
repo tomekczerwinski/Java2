@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.Response;
 
 import com.example.servletjspdemo.domain.Game;
-import com.example.servletjspdemo.domain.Person;
 import com.example.servletjspdemo.service.StorageServiceTomek;
 
 @WebServlet(urlPatterns = "/gameData")
@@ -40,6 +39,7 @@ public class OdbierzDane extends HttpServlet {
 		}
 		
 		Game game = (Game) request.getSession().getAttribute("gra");
+		
 		//response.setContentType("text/html");
 		//HttpSession session = request.getSession(); 
 		//ServletContext context = request.getSession().getServletContext();
@@ -77,14 +77,8 @@ public class OdbierzDane extends HttpServlet {
 					}
 				}*/
 				
-	
+
 		
-		/*if(request.getParameter("platforma") != null){
-				for (String platforma : request.getParameterValues("platforma")) {
-					selectedPlatforma += platforma + " ";
-					}
-				}
-		*/
 		
 		/*
 		String selectedPrawko = "";
@@ -97,7 +91,7 @@ public class OdbierzDane extends HttpServlet {
 				else selectedPrawko += "Brak prawa jazdy";
 		
 		*/	 
-		/* 
+		 /*
 		 if(request.getParameter("plec") != null) {
              if(request.getParameter("plec").equals("M")) {
                  plec = "Mezczyzna";
@@ -107,15 +101,20 @@ public class OdbierzDane extends HttpServlet {
              }
 		 }
 		 */
+		
+		
+		String selectedPlatforma = "";
+		if(request.getParameter("platforma") != null){
+				for (String platforma : request.getParameterValues("platforma")) {
+					selectedPlatforma += platforma + " ";
+					}
+				}
 		 
 		 String name = null;
 		 name = request.getParameter("name");
-		 
-		String selectedPlatforma = "";
-		selectedPlatforma = (request.getParameter("platforma"));
-		 
-		String dystrybutor = null;
-		dystrybutor = request.getParameter("dystrybutor");
+
+		 String dystrybutor = null;
+		 dystrybutor = request.getParameter("dystrybutor");
 		
 		 int dataWydania = 0;
 		 if(request.getParameter("dataWydania") != null) {
@@ -123,62 +122,14 @@ public class OdbierzDane extends HttpServlet {
 		 	}
 		 
 		 
-		 Float cena = null;
-		 cena = Float.parseFloat(request.getParameter("cena"));
+		Float cena = null;
+		cena = Float.parseFloat(request.getParameter("cena"));
 		 
 		 
-		/* if(request.getParameter("opis") != null) {
-		 cena = request.getParameter("opis");
-		 	}
-		 	
-		 	*/
-		 
-		 String wyksztalcenie = null;
-		 if(request.getParameter("wyksztalcenie") != null) {
-			 	wyksztalcenie = request.getParameter("wyksztalcenie");
-		 	}
-		 
-		 /*
-		 context.setAttribute("imie", imie);
-		 context.setAttribute("rokUr", rokUr);
-		 context.setAttribute("plec", plec);
-		 context.setAttribute("hobby", selectedHobby);
-		 context.setAttribute("opis", opis);
-		 context.setAttribute("wyksztalcenie", wyksztalcenie);
-		 context.setAttribute("selectedPrawko", selectedPrawko);
-		 */
-
-		 
-		String body = "<html><body> Name: "
-				+ "<form action=\"/servletjspdemo/showAllGames.jsp\">"
-				+ name
-				+ "<br/> Rok Urodzenia: "
-				+ dataWydania
-				+ "<br/> Plec: "
-				+ dystrybutor
-				+ "<br/> Hobby: "
-				+ selectedPlatforma
-				+ "<br/> Opis: "
-				+ cena
-				+ "<br/><br/>";
-				//+"Session id: " + session.getId() + "<br/>";
-
-		
-	
-		
-		
-		
-		// int id = 0;
-		// if(request.getParameter("id") != null) {
-			 //	dataWydania = Integer.parseInt(request.getParameter("id"));
-		// 	}
-		
-		//OsobaBaza p = new OsobaBaza();
+		String body = "<html><body><head><link rel=\"stylesheet\" type=\"text/css\" href=\"dist/css/bootstrap.css\"></head><title>Add</title> Rekord zostal dodany! "
+				+ "<form action=\"/servletjspdemo/showAllGames.jsp\">";
 
 		Game newGame = new Game();
-
-		//sst.getAllPersons();
-
 		
 		newGame.setName(name);
 		newGame.setPlatforma(selectedPlatforma);
@@ -186,29 +137,13 @@ public class OdbierzDane extends HttpServlet {
 		newGame.setDystrybutor(dystrybutor);
 		newGame.setDataWydania(dataWydania);
 		newGame.setId(Game.lastID);
-		
+
 		sst.add(newGame);
 		Game.lastID++;
 		
 		
-		/*body += "<ol>";
-		for(int j=0;j<sst.size();j++){
-			body+="<li> Imie: "
-			+sst.getAllGames().get(j).getName()
-			+"<br/> Rok Urodzenia: "
-			+sst.getAllGames().get(j).getDataWydania()
-			+"<br/> Plec: "
-			+sst.getAllGames().get(j).getDystrybutor()
-			+"<br/> Hobby: "
-			+sst.getAllGames().get(j).getPlatforma()
-			+"<br/> Opis: "
-			+sst.getAllGames().get(j).getCena();
-			
-			
-		}*/
-		
-		body += "<br/><br/> <input type =\"submit\" value=\"Powrot\" />"
-				+"<br/><br/></body></html>";
+		body += "<br/> <input type =\"submit\" value=\"Powrot\" />"
+				+"<br/></body></html>";
 		
 		writer.println(body);
 		writer.close();

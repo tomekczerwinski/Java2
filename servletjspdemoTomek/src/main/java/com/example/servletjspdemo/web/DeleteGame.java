@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.Response;
 
 import com.example.servletjspdemo.domain.Game;
-import com.example.servletjspdemo.domain.Person;
 import com.example.servletjspdemo.service.StorageServiceTomek;
 
 @WebServlet(urlPatterns = "/deleteGame")

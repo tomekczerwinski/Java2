@@ -5,12 +5,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Yolo</title>
+        <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css">
+        <title>Main</title>
     </head>
     <body>
-        <h2>Simple demo application with Java EE 6 Servlet (3.0) and JSP</h2>
-        <p><a href="hello">See greetings from servlet</a></p>
-        <p><a href="form">Fill a form</a></p>
-        <p><a href="getGameData.jsp">Fill a Person form</a></p>
+        <h2>Baza Danych z Grami</h2>
+
+        <p><a href="showAllGames.jsp">Pokaz wszystko</a></p>
+        <p><a href="getGameData.jsp">Dodaj gre</a></p>
     </body>
 </html>

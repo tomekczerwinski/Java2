@@ -16,43 +16,25 @@ import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.Response;
 
 import com.example.servletjspdemo.domain.Game;
-import com.example.servletjspdemo.domain.Person;
 import com.example.servletjspdemo.service.StorageServiceTomek;
 
 @WebServlet(urlPatterns = "/updateGameForm")
 
 public class UpdateGameForm extends HttpServlet {
-	//StorageServiceTomek sst = new StorageServiceTomek();
-	//StorageServiceTomek sst = getServletContext().getAttribute("sesja");
-	
-	
 
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter writer = response.getWriter();
 		
-		StorageServiceTomek sst = (StorageServiceTomek) getServletContext().getAttribute("baza");
-		
-		if(request.getSession().getAttribute("gra") == null){
-			request.getSession().setAttribute("gra", new Game());	
-		}
-		
-		Game game = (Game) request.getSession().getAttribute("gra");
-
-		 
-		 
-
-
 		 
 		 String name = null;
 		 name = request.getParameter("name");
 		 
 		 String dystrybutor = null;
 		 dystrybutor = request.getParameter("dystrybutor");
-		 
-		 String platforma = null;
-		 platforma = request.getParameter("platforma");
+
 		 
 		 int dataWydania = 0;
 		 if(request.getParameter("dataWydania") != null) {
@@ -64,34 +46,31 @@ public class UpdateGameForm extends HttpServlet {
 		 	}
 
 		 
-		 /*
-		 context.setAttribute("imie", imie);
-		 context.setAttribute("rokUr", rokUr);
-		 context.setAttribute("plec", plec);
-		 context.setAttribute("hobby", selectedHobby);
-		 context.setAttribute("opis", opis);
-		 context.setAttribute("wyksztalcenie", wyksztalcenie);
-		 context.setAttribute("selectedPrawko", selectedPrawko);
-		 */
 		 int ID = Integer.parseInt(request.getParameter("userId"));
          
 		 
-		 String body = "<html><body> ID: " + ID;
-		 /*
-		 Game newGame = new Game();
-		 sst.update(ID);
-			newGame.setName(name);
-			
-			newGame.setCena(cena);
-			newGame.setDystrybutor(dystrybutor);
-			newGame.setDataWydania(dataWydania);
-*/
+		 String body = "<html><body><head><link rel=\"stylesheet\" type=\"text/css\" href=\"dist/css/bootstrap.css\"></head><title>Update</title> ID: " + ID;
+
+		 boolean ps3 = false;
+		 boolean x360 = false;
+		 	if(request.getParameter("platforma").toLowerCase().contains("Playstation 3".toLowerCase())) ps3 = true;
+		 	if(request.getParameter("platforma").toLowerCase().contains("Xbox 360".toLowerCase())) x360 = true;
+		 	
+		 	
 		
 		body += ""
 				+ "<form action=\"/servletjspdemo/updateGame\"; method=\"get\">"
-				+	"Naza: <input type =\"text\" name=\"name\"value=\"" + name +"\"  />"
-				+	"Data Wydania: <input type =\"text\" name=\"dataWydania\"value=\"" + dataWydania +"\"  />"
-				+	"<input type =\"hidden\" name=\"id\"value=\"" + ID +"\"  />"
+				+	"Nazwa: <input type =\"text\" name=\"name\"value=\"" + name +"\"  /><br />"
+				+	"Dystrybutor: <input type =\"text\" name=\"dystrybutor\"value=\"" + dystrybutor +"\"  /><br />"
+				+	"Data Wydania: <input type =\"int\" name=\"dataWydania\"value=\"" + dataWydania +"\"  /><br />";
+		
+		if(ps3) body+="Platforma: <br><input type=\"checkbox\" name=\"platforma\" value=\"Playstation 3\" checked>Playstation 3<br/> ";
+		else body+="Platforma: <br><input type=\"checkbox\" name=\"platforma\" value=\"Playstation 3\">Playstation 3<br /> ";
+		if(x360) body+="<input type=\"checkbox\" name=\"platforma\" value=\"Xbox 360\" checked> Xbox 360<br/>" ;
+		else body+="<input type=\"checkbox\" name=\"platforma\" value=\"Xbox 360\"> Xbox 360<br/>" ;
+		
+		body+=	"Cena: <input type =\"float\" name=\"cena\"value=\"" + cena +"\"  /><br />"
+				+"<input type =\"hidden\" name=\"id\"value=\"" + ID +"\"  />"
 				+ "<br/><br/> <input type =\"submit\" value=\"Update\" />"
 				+"<br/><br/></body></html>";
 		
