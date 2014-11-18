@@ -58,8 +58,8 @@
 		<%
 	
 
-		out.println("<td><a href=\"deleteGame?userId="+String.valueOf(game.getId())+"\">Usun</a></td>");
-		out.println("<td><a href=\"updateGameForm?userId="+String.valueOf(game.getId())+"&name="+String.valueOf(game.getName())+"&dataWydania="+Integer.valueOf(game.getDataWydania())+"&dystrybutor="+String.valueOf(game.getDystrybutor())+"&platforma="+String.valueOf(game.getPlatforma())+"&cena="+Float.valueOf(game.getCena())+"\">Update</a></td>	</tr>");
+		out.println("<td><a href=\"deleteGame?gameId="+String.valueOf(game.getId())+"\">Usun</a></td>");
+		out.println("<td><a href=\"updateGameForm?gameId="+String.valueOf(game.getId())+"&name="+String.valueOf(game.getName())+"&dataWydania="+Integer.valueOf(game.getDataWydania())+"&dystrybutor="+String.valueOf(game.getDystrybutor())+"&platforma="+String.valueOf(game.getPlatforma())+"&cena="+Float.valueOf(game.getCena())+"\">Update</a></td>	</tr>");
 	}
 		
 

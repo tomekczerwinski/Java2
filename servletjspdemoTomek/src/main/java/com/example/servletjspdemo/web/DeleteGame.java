@@ -72,7 +72,7 @@ public class DeleteGame extends HttpServlet {
 		 context.setAttribute("wyksztalcenie", wyksztalcenie);
 		 context.setAttribute("selectedPrawko", selectedPrawko);
 		 */
-		 int ID = Integer.parseInt(request.getParameter("userId"));
+		 int ID = Integer.parseInt(request.getParameter("gameId"));
          
 		 
 		 String body = "<html><body> ID: " + ID;

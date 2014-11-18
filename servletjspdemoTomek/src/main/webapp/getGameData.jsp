@@ -16,7 +16,10 @@
 <form action="gameData">
 
   Name :<input type="text"  name="name" value="${game.name}" /><br />
-  Dystrybutor :<input type="text"  name="dystrybutor" value="${game.dystrybutor}" /><br />
+  Dystrybutor :<select name="dystrybutor">
+  <option>Square-Enix</option>
+  <option>Sony</option>
+  </select><br />
   Data Wydania :<input type="int"  name="dataWydania" value="${game.dataWydania}" /><br />
   Platforma: <br><input type="checkbox" name="platforma" value="Playstation 3">Playstation 3<br /> 
  	<input type="checkbox" name="platforma" value="Xbox 360">Xbox 360<br /> 

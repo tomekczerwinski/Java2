@@ -114,7 +114,9 @@ public class OdbierzDane extends HttpServlet {
 		 name = request.getParameter("name");
 
 		 String dystrybutor = null;
-		 dystrybutor = request.getParameter("dystrybutor");
+		 if(request.getParameter("dystrybutor") != null) {
+			 dystrybutor= request.getParameter("dystrybutor");
+		 	}
 		
 		 int dataWydania = 0;
 		 if(request.getParameter("dataWydania") != null) {

@@ -32,6 +32,16 @@ public class UpdateGameForm extends HttpServlet {
 		 String name = null;
 		 name = request.getParameter("name");
 		 
+		 
+		 boolean sq = false;
+		 boolean sony = false;
+		 if(request.getParameter("dystrybutor").equalsIgnoreCase("Square-Enix") ){
+				sq=true;
+			}
+		 if(request.getParameter("dystrybutor").equalsIgnoreCase("Sony") ){
+				sony=true;
+			}
+		 
 		 String dystrybutor = null;
 		 dystrybutor = request.getParameter("dystrybutor");
 
@@ -46,7 +56,7 @@ public class UpdateGameForm extends HttpServlet {
 		 	}
 
 		 
-		 int ID = Integer.parseInt(request.getParameter("userId"));
+		 int ID = Integer.parseInt(request.getParameter("gameId"));
          
 		 
 		 String body = "<html><body><head><link rel=\"stylesheet\" type=\"text/css\" href=\"dist/css/bootstrap.css\"></head><title>Update</title> ID: " + ID;
@@ -61,8 +71,15 @@ public class UpdateGameForm extends HttpServlet {
 		body += ""
 				+ "<form action=\"/servletjspdemo/updateGame\"; method=\"get\">"
 				+	"Nazwa: <input type =\"text\" name=\"name\"value=\"" + name +"\"  /><br />"
-				+	"Dystrybutor: <input type =\"text\" name=\"dystrybutor\"value=\"" + dystrybutor +"\"  /><br />"
-				+	"Data Wydania: <input type =\"int\" name=\"dataWydania\"value=\"" + dataWydania +"\"  /><br />";
+				+	"Dystrybutor :<select name=\"dystrybutor\">";
+		if(sq) body+="<option selected>Square-Enix</option>";
+		else body+="<option>Square-Enix</option>";
+		if(sony) body+="<option selected>Sony</option>";
+		else body+="<option>Sony</option>";
+		
+		body+="</select><br/>";
+		
+		body+="Data Wydania: <input type =\"int\" name=\"dataWydania\"value=\"" + dataWydania +"\"  /><br />";
 		
 		if(ps3) body+="Platforma: <br><input type=\"checkbox\" name=\"platforma\" value=\"Playstation 3\" checked>Playstation 3<br/> ";
 		else body+="Platforma: <br><input type=\"checkbox\" name=\"platforma\" value=\"Playstation 3\">Playstation 3<br /> ";
