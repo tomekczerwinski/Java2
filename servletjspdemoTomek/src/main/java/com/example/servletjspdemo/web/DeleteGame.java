@@ -75,12 +75,13 @@ public class DeleteGame extends HttpServlet {
 		 int ID = Integer.parseInt(request.getParameter("gameId"));
          
 		 
-		 String body = "<html><body> ID: " + ID;
+		 String body = "<html><body><head><link rel=\"stylesheet\" type=\"text/css\" href=\"dist/css/bootstrap.css\"></head> ID: " + ID;
 		 
 		 sst.delete(ID);
 
 		
-		body += "<br/><br/> <input type =\"submit\" value=\"Powrot\" />"
+		body += "<form action=\"/servletjspdemo/index.jsp\""
+				+"<br/><br/> <input type =\"submit\" value=\"Powrot\" />"
 				+"<br/><br/></body></html>";
 		
 		writer.println(body);
