@@ -75,7 +75,7 @@ public class DeleteGame extends HttpServlet {
 		 int ID = Integer.parseInt(request.getParameter("gameId"));
          
 		 
-		 String body = "<html><body><head><link rel=\"stylesheet\" type=\"text/css\" href=\"dist/css/bootstrap.css\"></head> ID: " + ID;
+		 String body = "<html><body><head><link rel=\"stylesheet\" type=\"text/css\" href=\"dist/css/bootstrap.css\"></head> Rekord zostal usuniety! ";
 		 
 		 sst.delete(ID);
 
