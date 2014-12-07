@@ -24,7 +24,8 @@
   Platforma: <br><input type="checkbox" name="platforma" value="Playstation 3">Playstation 3<br /> 
  	<input type="checkbox" name="platforma" value="Xbox 360">Xbox 360<br /> 
   Cena :<input type="float"  name="cena" value="${game.cena}" /><br />
-
+  PEGI :<br/><input type="radio" name="pegi" value="3">3<br/>
+	<input type="radio" name="pegi" value="12">12<br/>
   
   <input type="submit" value=" OK ">
   

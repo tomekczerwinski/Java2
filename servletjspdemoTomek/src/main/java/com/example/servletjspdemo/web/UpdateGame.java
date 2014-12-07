@@ -57,6 +57,16 @@ public class UpdateGame extends HttpServlet {
 		 if(request.getParameter("dataWydania") != null) {
 			 	dataWydania = Integer.parseInt(request.getParameter("dataWydania"));
 		 	}
+		 
+		 String pegi="";
+		 if(request.getParameter("pegi") != null) {
+             if(request.getParameter("pegi").equals("3")) {
+                 pegi = "3";
+             }
+             else {
+            	 pegi = "12";
+             }
+		 }
 		 float cena =0;
 		 if(request.getParameter("cena") != null) {
 			 	cena = Float.parseFloat(request.getParameter("cena"));
@@ -74,6 +84,7 @@ public class UpdateGame extends HttpServlet {
 			newGame.setCena(cena);
 			newGame.setDystrybutor(dystrybutor);
 			newGame.setDataWydania(dataWydania);
+			newGame.setPegi(pegi);
 			newGame.setId(ID);
 
 		

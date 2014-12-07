@@ -123,6 +123,17 @@ public class OdbierzDane extends HttpServlet {
 			 	dataWydania = Integer.parseInt(request.getParameter("dataWydania"));
 		 	}
 		 
+		 String pegi ="";
+		// pegi = request.getParameter("pegi");
+		 
+		 if(request.getParameter("pegi") != null) {
+             if(request.getParameter("pegi").equals("3")) {
+                 pegi = "3";
+             }
+             else {
+            	 pegi = "12";
+             }
+		 }
 		 
 		Float cena = null;
 		cena = Float.parseFloat(request.getParameter("cena"));
@@ -133,11 +144,14 @@ public class OdbierzDane extends HttpServlet {
 
 		Game newGame = new Game();
 		
+		
+		
 		newGame.setName(name);
 		newGame.setPlatforma(selectedPlatforma);
 		newGame.setCena(cena);
 		newGame.setDystrybutor(dystrybutor);
 		newGame.setDataWydania(dataWydania);
+		newGame.setPegi(pegi);
 		newGame.setId(Game.lastID);
 
 		sst.add(newGame);

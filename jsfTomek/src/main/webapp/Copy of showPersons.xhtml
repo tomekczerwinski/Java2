@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core">
+   <h:head>
+      <title>JSF tutorial</title>		
+      <h:outputStylesheet library="css" name="styles.css"  /> 	
+   </h:head>
+   <h:body> 
+   <h2>DataTable Example</h2>
+   <h:form>
+      <h:dataTable value="#{gameBean.games}" var="game"
+         styleClass="employeeTable"
+         headerClass="employeeTableHeader"
+         rowClasses="employeeTableOddRow,employeeTableEvenRow">
+         <h:column>    				
+            <f:facet name="header">Name</f:facet>    				
+            <h:inputText value="#{game.name}"
+               size="10" rendered="#{game.canEdit}" />
+            <h:outputText value="#{game.name}"
+               rendered="#{not game.canEdit}" />
+         </h:column>
+         <h:column>
+            <f:facet name="header">Department</f:facet>
+            <h:inputText value="#{game.platforma}" 
+               size="20" rendered="#{game.canEdit}" />
+            <h:outputText value="#{game.platforma}" 
+               rendered="#{not game.canEdit}" />
+         </h:column>
+         <h:column>
+            <f:facet name="header">Age</f:facet>
+            <h:inputText value="#{game.cena}" size="5"
+               rendered="#{game.canEdit}" />
+            <h:outputText value="#{game.cena}" 
+               rendered="#{not game.canEdit}" />
+         </h:column>
+         <h:column>
+            <f:facet name="header">Salary</f:facet>
+            <h:inputText value="#{game.pegi}" 
+               size="5" rendered="#{game.canEdit}" />
+            <h:outputText value="#{game.pegi}" 
+               rendered="#{not game.canEdit}" />
+         </h:column>
+         <h:column>
+            <f:facet name="header">Edit</f:facet>
+               <h:commandButton value="Edit" 
+                  action="#{gameBean.editGame}" 
+                  rendered="#{not game.canEdit}">        
+                  <f:setPropertyActionListener 
+                     target="#{gameBean.games}" value="#{game}" />
+               </h:commandButton>
+         </h:column>
+      </h:dataTable>  
+	  <br/>
+	<h:commandButton value="Save Employees"
+          action="#{gameBean.saveGame}" />	  
+   </h:form>
+   </h:body>
+</html>

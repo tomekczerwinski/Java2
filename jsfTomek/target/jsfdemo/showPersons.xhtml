@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+	
+	<ui:define name="content">
+	
+    <h:form>
+    
+     <h:dataTable value="#{gameBean.allGames}" var="item">
+      <f:facet name="header">#{msg.gameAllLabel}</f:facet>
+      
+      <h:column>
+      
+        <f:facet name="header">#{msg.gameNameLabel}</f:facet>
+         <h:inputText value="#{item.name}"
+               size="10" rendered="#{item.canEdit}" />
+            <h:outputText value="#{item.name}"
+               rendered="#{not item.canEdit}" />
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.gameCenaLabel}</f:facet>
+         <h:inputText value="#{item.cena}"
+               size="10" rendered="#{item.canEdit}" />
+            <h:outputText value="#{item.cena}"
+               rendered="#{not item.canEdit}" />
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.gamePlatformaLabel}</f:facet>
+         <h:inputText value="#{item.platforma}"
+               size="10" rendered="#{item.canEdit}" />
+            <h:outputText value="#{item.platforma}"
+               rendered="#{not item.canEdit}" />
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.gamePegiLabel}</f:facet>
+         <h:inputText value="#{item.pegi}"
+               size="10" rendered="#{item.canEdit}" />
+            <h:outputText value="#{item.pegi}"
+               rendered="#{not item.canEdit}" />
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.action}</f:facet>
+        <h:commandLink value="#{msg.actionDelete}" action="#{gameBean.deleteGame}"/>
+      </h:column>
+      
+ 	<h:column>
+            <f:facet name="header">Edit</f:facet>
+               <h:commandButton value="Edit" 
+                  action="#{gameBean.editGame}" 
+                  rendered="#{not item.canEdit}">        
+                  <f:setPropertyActionListener 
+                     target="#{gameBean.game}" value="#{item}" />
+               </h:commandButton>
+     </h:column>
+     
+     <h:column>
+     <h:commandButton value="Save Game"
+          action="#{gameBean.saveGame}" />	
+      </h:column>
+      
+     </h:dataTable>  
+    </h:form>
+      
+	</ui:define>
+	
+</ui:composition>

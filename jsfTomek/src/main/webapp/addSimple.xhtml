@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+	<ui:define name="content">
+		<h:form id="gameform">
+			<h:panelGrid columns="2">
+
+				<h:inputText id="id" value="#{gameBean.game.name}" />
+
+				<h:outputText value="#{msg.gameNameLabel}" />
+				<h:inputText id="name" value="#{gameBean.game.name}" />
+
+				<h:outputText value="#{msg.gameCenaLabel}" />
+				<h:inputText id="cena" value="#{gameBean.game.cena}" />
+				
+				<h:outputText value="#{msg.gamePegiLabel}" />
+				<h:selectOneRadio id="pegi" value="#{gameBean.game.pegi}">
+					<f:selectItem id="pegi3" itemLabel="PEGI 3" itemValue="PEGI3" />
+					<f:selectItem id="pegi9" itemLabel="PEGI 9" itemValue="PEGI9" />
+					
+				</h:selectOneRadio>
+				
+				<h:outputText value="#{msg.gamePlatformaLabel}" />
+				<h:selectManyCheckbox id="platforma" value="#{gameBean.game.platforma}">
+       				<f:selectItem id="ps3" itemLabel="Playstation 3" itemValue="PS3" />
+					<f:selectItem id="x360" itemLabel="Xbox 360" itemValue="X360" />
+					<f:selectItem id="wiiu" itemLabel="WiiU" itemValue="WiiU" />
+				</h:selectManyCheckbox>
+				
+			</h:panelGrid>
+
+			<h:commandButton value="#{msg.personFormOKButton}"
+				action="#{gameBean.addGame}" />
+				
+			<h:panelGrid>
+				<h:messages showDetail="#{true}" showSummary="#{false}" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

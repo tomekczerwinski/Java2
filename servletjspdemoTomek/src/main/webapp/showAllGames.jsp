@@ -18,6 +18,7 @@
                 <th>Data Wydania</th>
                 <th>Platforma</th>
                 <th>Cena</th>
+                <th>PEGI</th>
                 <th colspan=2>Akcja</th>
             </tr>
         </thead>
@@ -54,12 +55,17 @@
 		out.println("<p>" + game.getCena() + "</p>");
 		%>
 		</td>
+		<td>
+		<%
+		out.println("<p>" + game.getPegi() + "</p>");
+		%>
+		</td>
 				
 		<%
 	
 
 		out.println("<td><a href=\"deleteGameConfirm?gameId="+String.valueOf(game.getId())+"\">Usun</a></td>");
-		out.println("<td><a href=\"updateGameForm?gameId="+String.valueOf(game.getId())+"&name="+String.valueOf(game.getName())+"&dataWydania="+Integer.valueOf(game.getDataWydania())+"&dystrybutor="+String.valueOf(game.getDystrybutor())+"&platforma="+String.valueOf(game.getPlatforma())+"&cena="+Float.valueOf(game.getCena())+"\">Update</a></td>	</tr>");
+		out.println("<td><a href=\"updateGameForm?gameId="+String.valueOf(game.getId())+"&name="+String.valueOf(game.getName())+"&dataWydania="+Integer.valueOf(game.getDataWydania())+"&dystrybutor="+String.valueOf(game.getDystrybutor())+"&platforma="+String.valueOf(game.getPlatforma())+"&cena="+Float.valueOf(game.getCena())+"&pegi="+String.valueOf(game.getPegi())+"\">Update</a></td>	</tr>");
 	}
 		
 

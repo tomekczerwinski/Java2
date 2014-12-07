@@ -9,6 +9,7 @@ public class Game {
 	private String dystrybutor = "";
 	private String platforma = "";
 	private float cena =0;
+	private String pegi ="";
 	public static int lastID = 0;
 
 
@@ -18,7 +19,7 @@ public class Game {
 		super();
 	}
 	
-	public Game(int dataWydania, int id, String nameD, String name, String dystrybutor, String platforma, float cena) {
+	public Game(int dataWydania, int id, String nameD, String name, String dystrybutor, String platforma, float cena, String pegi) {
 		super();
 		this.dataWydania = dataWydania;
 		this.id = id;
@@ -27,6 +28,7 @@ public class Game {
 		this.dystrybutor = dystrybutor;
 		this.platforma = platforma;
 		this.cena = cena;
+		this.pegi = pegi;
 
 	}
 
@@ -72,6 +74,11 @@ public class Game {
 		this.cena = cena;
 	}
 
-
+	public String getPegi() {
+		return pegi;
+	}
+	public void setPegi(String pegi) {
+		this.pegi = pegi;
+	}
 
 }

@@ -65,7 +65,10 @@ public class UpdateGameForm extends HttpServlet {
 		 boolean x360 = false;
 		 	if(request.getParameter("platforma").toLowerCase().contains("Playstation 3".toLowerCase())) ps3 = true;
 		 	if(request.getParameter("platforma").toLowerCase().contains("Xbox 360".toLowerCase())) x360 = true;
-		 	
+		boolean p3 = false;
+		boolean p12 = false;
+		if(request.getParameter("pegi").toLowerCase().contains("3".toLowerCase())) p3 = true;
+	 	if(request.getParameter("pegi").toLowerCase().contains("12".toLowerCase())) p12 = true;
 		 	
 		
 		body += ""
@@ -86,8 +89,16 @@ public class UpdateGameForm extends HttpServlet {
 		if(x360) body+="<input type=\"checkbox\" name=\"platforma\" value=\"Xbox 360\" checked> Xbox 360<br/>" ;
 		else body+="<input type=\"checkbox\" name=\"platforma\" value=\"Xbox 360\"> Xbox 360<br/>" ;
 		
-		body+=	"Cena: <input type =\"float\" name=\"cena\"value=\"" + cena +"\"  /><br />"
-				+"<input type =\"hidden\" name=\"id\"value=\"" + ID +"\"  />"
+		body+=	"Cena: <input type =\"float\" name=\"cena\"value=\"" + cena +"\"  /><br />";
+				
+
+		
+		if(p3) body+="PEGI: <br/><input type=\"radio\" name=\"pegi\" value=\"3\" checked>PEGI 3<br/> ";
+		else body+="PEGI: <br/><input type=\"radio\" name=\"pegi\" value=\"3\">PEGI 3<br/> ";
+		if(p12) body+="<input type=\"radio\" name=\"pegi\" value=\"12\" checked>PEGI 12<br/> ";
+		else body+="<input type=\"radio\" name=\"pegi\" value=\"12\">PEGI 12<br/> ";
+				
+		body+= "<input type =\"hidden\" name=\"id\"value=\"" + ID +"\"  />"
 				+ "<br/><br/> <input type =\"submit\" value=\"Update\" />"
 				+"<br/><br/></body></html>";
 		

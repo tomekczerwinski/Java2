@@ -13,7 +13,7 @@ public class StorageServiceTomek {
 	private List<Game> db = new ArrayList<Game>();
 	
 	public void add(Game game){
-		Game newGame = new Game( game.getDataWydania(), Game.lastID, game.getName(), game.getName(), game.getDystrybutor(), game.getPlatforma(), game.getCena());
+		Game newGame = new Game( game.getDataWydania(), Game.lastID, game.getName(), game.getName(), game.getDystrybutor(), game.getPlatforma(), game.getCena(), game.getPegi());
 		
 		db.add(newGame);
 		
