@@ -8,8 +8,6 @@
 		<h:form id="gameform">
 			<h:panelGrid columns="2">
 
-				<h:inputText id="id" value="#{gameBean.game.id}" />
-
 				<h:outputText value="#{msg.gameNameLabel}" />
 				<h:inputText id="name" value="#{gameBean.game.name}" />
 
@@ -18,15 +16,15 @@
 				
 				<h:outputText value="#{msg.gamePegiLabel}" />
 				<h:selectOneRadio id="pegi" value="#{gameBean.game.pegi}">
-					<f:selectItem id="pegi3" itemLabel="gamePegi3Label" itemValue="PEGI3" />
-					<f:selectItem id="pegi9" itemLabel="gamePegi9Label" itemValue="PEGI9" />
+					<f:selectItem id="pegi3" itemLabel="PEGI 3" itemValue="PEGI3" />
+					<f:selectItem id="pegi9" itemLabel="PEGI 9" itemValue="PEGI9" />
 					
 				</h:selectOneRadio>
 				
 				<h:outputText value="#{msg.gamePlatformaLabel}" />
 				<h:selectManyCheckbox id="platforma" value="#{gameBean.game.platforma}">
-       				<f:selectItem id="ps3" itemLabel="Playstation3" itemValue="PS3" />
-					<f:selectItem id="x360" itemLabel="Xbox360" itemValue="X360" />
+       				<f:selectItem id="ps3" itemLabel="Playstation 3" itemValue="PS3" />
+					<f:selectItem id="x360" itemLabel="Xbox 360" itemValue="X360" />
 					<f:selectItem id="wiiu" itemLabel="WiiU" itemValue="WiiU" />
 				</h:selectManyCheckbox>
 				
