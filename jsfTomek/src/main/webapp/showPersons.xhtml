@@ -6,8 +6,8 @@
 	template="/templates/default.xhtml">
 	
 	<ui:define name="content">
-	
-    <h:form>
+
+    <h:form id="gameform">
     
      <h:dataTable value="#{gameBean.allGames}" var="item">
       <f:facet name="header">#{msg.gameAllLabel}</f:facet>
@@ -15,34 +15,27 @@
       <h:column>
       
         <f:facet name="header">#{msg.gameNameLabel}</f:facet>
-         <h:inputText value="#{item.name}"
-               size="10" rendered="#{item.canEdit}" />
-            <h:outputText value="#{item.name}"
-               rendered="#{not item.canEdit}" />
+            <h:outputText value="#{item.name}"/>
       </h:column>
       
       <h:column>
         <f:facet name="header">#{msg.gameCenaLabel}</f:facet>
-         <h:inputText value="#{item.cena}"
-               size="10" rendered="#{item.canEdit}" />
-            <h:outputText value="#{item.cena}"
-               rendered="#{not item.canEdit}" />
+            <h:outputText value="#{item.cena}"/>
       </h:column>
       
       <h:column>
         <f:facet name="header">#{msg.gamePlatformaLabel}</f:facet>
-         <h:inputText value="#{item.platforma}"
-               size="10" rendered="#{item.canEdit}" />
-            <h:outputText value="#{item.platforma}"
-               rendered="#{not item.canEdit}" />
+            <h:outputText value="#{item.platforma}"/>
       </h:column>
       
       <h:column>
         <f:facet name="header">#{msg.gamePegiLabel}</f:facet>
-         <h:inputText value="#{item.pegi}"
-               size="10" rendered="#{item.canEdit}" />
-            <h:outputText value="#{item.pegi}"
-               rendered="#{not item.canEdit}" />
+            <h:outputText value="#{item.pegi}"/>
+      </h:column>
+      
+            <h:column>
+        <f:facet name="header">#{msg.gameIDDD}</f:facet>
+            <h:outputText value="#{item.uuid}"/>
       </h:column>
       
       <h:column>
@@ -50,11 +43,16 @@
         <h:commandLink value="#{msg.actionDelete}" action="#{gameBean.deleteGame}"/>
       </h:column>
       
+      
       <h:column>
         <f:facet name="header">#{msg.action}</f:facet>
         <h:commandLink value="#{msg.actionEdit}" action="#{gameBean.editGame}"/>
       </h:column>
 
+			<h:panelGrid>
+				<h:messages showDetail="#{true}" showSummary="#{false}" />
+			</h:panelGrid>
+			
      </h:dataTable>  
     </h:form>
       

@@ -11,18 +11,18 @@
 		<h:form id="personForm">
 			<h:panelGrid columns="2">
 			
-				<h:outputText value="#{msg.personFirstNameLabel}" />
-				<h:inputText id="name" value="#{personBean.person.firstName}">
+				<h:outputText value="#{msg.gameNameLabel}" />
+				<h:inputText id="name" value="#{gameBean.game.name}">
 					<a4j:ajax render="messages" execute="@this" />
 				</h:inputText>
 
-				<h:outputText value="#{msg.personPinLabel}" />
-				<h:inputText id="pin" value="#{personBean.person.pin}" />
+				<h:outputText value="#{msg.gameIdLabel}" />
+				<h:inputText id="id" value="#{gameBean.game.uniqueId}" />
 
 
-				<h:outputText value="#{msg.personDobLabel}" />
+				<h:outputText value="#{msg.gameProduceDateLabel}" />
 
-				<rich:calendar value="#{personBean.person.dateOfBirth}"
+				<rich:calendar value="#{gameBean.game.produceDate}"
 					id="calendar" datePattern="dd.MM.yyyy" showApplyButton="#{true}"
 					cellWidth="24px" cellHeight="22px" style="width:200px">
 					<a4j:ajax render="messages" execute="@this" />
@@ -38,17 +38,17 @@
 			<a4j:outputPanel ajaxRendered="true">
 				<h:panelGrid columns="2">
 
-					<h:outputText value="#{msg.personFirstNameLabel}" />
+					<h:outputText value="#{msg.gameNameLabel}" />
 					<h:outputText id="nameOutput"
-						value="#{personBean.person.firstName}" />
+						value="#{gameBean.game.name}" />
 
-					<h:outputText value="#{msg.personPinLabel}" />
-					<h:outputText id="pinOutput" value="#{personBean.person.pin}" />
+					<h:outputText value="#{msg.gameIdLabel}" />
+					<h:outputText id="idOutput" value="#{gameBean.game.uniqueId}" />
 
 
-					<h:outputText value="#{msg.personDobLabel}" />
-					<h:outputText id="dobOutput"
-						value="#{personBean.person.dateOfBirth}" />
+					<h:outputText value="#{msg.gameProduceDateLabel}" />
+					<h:outputText id="pdOutput"
+						value="#{gameBean.game.produceDate}" />
 
 				</h:panelGrid>
 			</a4j:outputPanel>

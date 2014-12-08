@@ -2,6 +2,7 @@ package com.example.jsfdemo.domain;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Past;
@@ -10,16 +11,15 @@ import javax.validation.constraints.Size;
 
 public class Game {
 	private int dataWydania =0;
-	public int id =0;
-	private String nazwaD = "";
 	private String name = "";
 	private String dystrybutor = "";
 	private ArrayList<String> platforma = null;
 	private float cena =0;
 	private String pegi ="";
-	public static int lastID = 0;
-	private boolean canEdit = false;
-	
+	private long uuid = UUID.randomUUID().getLeastSignificantBits();
+	private String uniqueId="";
+	private Date produceDate = new Date();
+	private int rate=0;
 
 
 	public String getName() {
@@ -34,13 +34,6 @@ public class Game {
 	}
 	public void setDataWydania(int dataWydania) {
 		this.dataWydania = dataWydania;
-	}
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	
 	public String getDystrybutor() {
@@ -71,13 +64,13 @@ public class Game {
 		this.pegi = pegi;
 	}
 	
-	public boolean getCanEdit() {
-		return canEdit;
-	}
 	
-	public void setCanEdit(boolean canEdit) {
-		      this.canEdit = canEdit;
-		   }
+	public long getUuid() {
+		return uuid;
+	}
+	public void setUuid(long uuid) {
+		this.uuid = uuid;
+	}	
 	/*
 	private String firstName = "unknown";
 	private String zipCode = "";
@@ -196,6 +189,25 @@ public class Game {
 
 	   public void setCanEdit(boolean canEdit) {
 	      this.canEdit = canEdit;
-	   }*/	
+	   }*/
+	public String getUniqueId() {
+		return uniqueId;
+	}
+	public void setUniqueId(String uniqueId) {
+		this.uniqueId = uniqueId;
+	}
+	public Date getProduceDate() {
+		return produceDate;
+	}
+	public void setProduceDate(Date produceDate) {
+		this.produceDate = produceDate;
+	}
+	public int getRate() {
+		return rate;
+	}
+	public void setRate(int rate) {
+		this.rate = rate;
+	}
+
 	}
 	

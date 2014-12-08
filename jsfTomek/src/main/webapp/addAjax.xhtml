@@ -6,43 +6,36 @@
 	template="/templates/default.xhtml">
 	<ui:define name="content">
 
-		<h:form id="personForm">
+		<h:form id="gameForm">
 			<h:panelGrid columns="2">
 
-				<h:outputText value="#{msg.personFirstNameLabel}" />
-				<h:inputText id="firstName" value="#{personBean.person.firstName}"
+				<h:outputText value="#{msg.gameNameLabel}" />
+				<h:inputText id="firstName" value="#{gameBean.game.name}"
 					required="#{true}" />
 
-				<h:outputText value="#{msg.personPinLabel}" />
-				<h:inputText id="pin" value="#{personBean.person.pin}"
-					validator="#{personBean.uniquePin}" required="#{true}">
-					<f:validator validatorId="pinValidator" />
+				<h:outputText value="#{msg.gameIdLabel}" />
+				<h:inputText id="id" value="#{gameBean.game.uniqueId}"
+					validator="#{gameBean.uniqueId}" required="#{true}">
+					<f:validator validatorId="uniqueGameIdValidator" />
 					<f:ajax execute="@this" render="messages beanState" />
 				</h:inputText>
 
-				<h:outputText value="#{msg.personDobLabel}" />
-				<h:inputText id="dob" value="#{personBean.person.dateOfBirth}">
+				<h:outputText value="#{msg.gameProduceDateLabel}" />
+				<h:inputText id="pd" value="#{gameBean.game.produceDate}">
 					<f:convertDateTime type="date" pattern="dd.MM.yyyy" />
 				</h:inputText>
 
-				<h:outputText value="#{msg.personZipCodeLabel}" />
-				<h:inputText id="zipCode" value="#{personBean.person.zipCode}" />
-
-				<h:outputText value="#{msg.personWeightLabel}" />
-				<h:inputText id="weight" value="#{personBean.person.weight}">
-					<f:validateDoubleRange minimum="20.5" maximum="150.5" />
+				<h:outputText value="#{msg.gameRateLabel}" />
+				<h:inputText id="rate" value="#{gameBean.game.rate}">
+					<f:validateDoubleRange minimum="1" maximum="10" />
 					<f:ajax execute="@this" render="messages beanState" />
 				</h:inputText>
 
-				<h:outputText value="#{msg.personNumOfChildrenLabel}" />
-				<h:inputText id="noc" value="#{personBean.person.numOfChildren}">
-
-				</h:inputText>
 
 			</h:panelGrid>
 
 			<h:commandButton value="#{msg.personFormOKButton}"
-				action="#{personBean.addPerson}" />
+				action="#{gameBean.addGame}" />
 
 
 			<h:panelGrid>
@@ -51,15 +44,15 @@
 			</h:panelGrid>
 
 			<h:panelGrid id="beanState" columns="2">
-				<h:outputText value="#{msg.personFirstNameLabel}" />
-				<h:outputText id="nameOutput" value="#{personBean.person.firstName}" />
+				<h:outputText value="#{msg.gameNameLabel}" />
+				<h:outputText id="nameOutput" value="#{gameBean.game.name}" />
 
-				<h:outputText value="#{msg.personPinLabel}" />
-				<h:outputText id="pinOutput" value="#{personBean.person.pin}" />
+				<h:outputText value="#{msg.gameIdLabel}" />
+				<h:outputText id="idOutput" value="#{gameBean.game.uniqueId}" />
 
-				<h:outputText value="#{msg.personDobLabel}" />
-				<h:outputText id="dobOutput"
-					value="#{personBean.person.dateOfBirth}" />
+				<h:outputText value="#{msg.gameProduceLabel}" />
+				<h:outputText id="produceOutput"
+					value="#{gameBean.game.produceDate}" />
 			</h:panelGrid>
 
 		</h:form>

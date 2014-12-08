@@ -123,6 +123,7 @@ public class GameFormBean implements Serializable {
 	private GameMenager gm;
 
 	public Game getGame() {
+		
 		return game;
 	}
 
@@ -153,12 +154,14 @@ public class GameFormBean implements Serializable {
 	public String editGame(){
 		Game gameToUpdate = games.getRowData();
 		gm.updateGame(gameToUpdate);
+		
+		return "showUpdate";
 		     
-		      return "showUpdate";
+		      
 		   }
 	
-	   public String saveGame(){
-		      //set "canEdit" of all employees to false 
+	public String saveGame(){
+		     
 		   
 		   gm.updateGameFinish(game);
 		      return "showPersons";
@@ -169,29 +172,29 @@ public class GameFormBean implements Serializable {
 
 	// Business logic validation
 	
-	/*
-	public void uniquePin(FacesContext context, UIComponent component,
+	
+	public void uniqueId(FacesContext context, UIComponent component,
 			Object value) {
 
-		String pin = (String) value;
+		String uniqueId = (String) value;
 
-		for (Game person : pm.getAllGames()) {
-			if (person.getPin().equalsIgnoreCase(pin)) {
+		for (Game game : gm.getAllGames()) {
+			if (game.getUniqueId().equalsIgnoreCase(uniqueId)) {
 				FacesMessage message = new FacesMessage(
-						"Person with this PIN already exists in database");
+						"Game with this ID already exists in database");
 				message.setSeverity(FacesMessage.SEVERITY_ERROR);
 				throw new ValidatorException(message);
 			}
 		}
 	}
 	
-
+	/*
 	// Multi field validation with <f:event>
 	// Rule: first two digits of PIN must match last two digits of the year of
 	// birth
 	public void validatePinDob(ComponentSystemEvent event) {
 
-		UIForm form = (UIForm) event.getComponent();
+		UIForm form = (UIForm) event.getComsg.personPinLabel}mponent();
 		UIInput pin = (UIInput) form.findComponent("pin");
 		UIInput dob = (UIInput) form.findComponent("dob");
 

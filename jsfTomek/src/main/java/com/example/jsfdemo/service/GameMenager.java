@@ -18,7 +18,7 @@ public class GameMenager {
 		newGame.setCena(game.getCena());
 		newGame.setPegi(game.getPegi());
 		newGame.setPlatforma(game.getPlatforma());
-		newGame.setId(Game.lastID);
+
 		
 		/*
 		newGame.setPin(game.getPin());
@@ -28,14 +28,14 @@ public class GameMenager {
 		newGame.setNumOfChildren(game.getNumOfChildren());
 */
 		db.add(newGame);
-		Game.lastID++;
+		//Game.lastID=Game.lastID+1;
 	}
 
 	// Removes the person with given PIN
 	public void deleteGame(Game game) {
 		Game gameToRemove = null;
 		for (Game p : db) {
-			if (game.getId() == p.getId()) {
+			if (game.getUuid() == p.getUuid()) {
 				gameToRemove = p;
 				break;
 			}
@@ -45,23 +45,27 @@ public class GameMenager {
 	}
 	
 	public void updateGame(Game game) {
+		Game newGame = new Game();
+		newGame.setName(game.getName());
+		newGame.setCena(game.getCena());
+		newGame.setPegi(game.getPegi());
+		newGame.setPlatforma(game.getPlatforma());
+		newGame.setUuid(game.getUuid());
+		
 		Game gameToUpdate = null;
+		int i=0;
 		for (Game p : db) {
-			if (game.getId() == p.getId()) {
+			i++;
+			if (game.getUuid() == p.getUuid()) {
 				gameToUpdate = p;
 				break;
 			}
 		}
 		if (gameToUpdate != null){
-			// gameToUpdate.setCanEdit(true);
-			Game newGame = new Game();
+			db.set(i-1,newGame);
 
-			newGame.setName(game.getName());
-			newGame.setCena(game.getCena());
-			newGame.setPegi(game.getPegi());
-			newGame.setPlatforma(game.getPlatforma());
-			newGame.setId(game.getId());
-			}
+		}
+
 	
 		
 	}
@@ -72,13 +76,13 @@ public class GameMenager {
 		newGame.setCena(game.getCena());
 		newGame.setPegi(game.getPegi());
 		newGame.setPlatforma(game.getPlatforma());
-		newGame.setId(game.getId());
+		newGame.setUuid(game.getUuid());
 		
 		Game gameToUpdate = null;
 		int i=0;
 		for (Game p : db) {
 			i++;
-			if (game.getId() == p.getId()) {
+			if (game.getUuid() == p.getUuid()) {
 				gameToUpdate = p;
 				break;
 			}
@@ -91,10 +95,6 @@ public class GameMenager {
 	}
 
 	
-	 public String editGame(Game game){
-		      game.setCanEdit(true);
-		      return null;
-		   }
 
 	public List<Game> getAllGames() {
 		return db;
