@@ -7,35 +7,34 @@
 	<ui:define name="content">
 
 		<h:form id="gameForm">
-            <f:event type="postValidate" listener="#{personBean.validatePinDob}" />
+            <f:event type="postValidate" listener="#{gameBean.validateRateGame}" />
             
 			<h:panelGrid columns="2">
 
-				<h:outputText value="#{msg.personFirstNameLabel}" />
-				<h:inputText id="firstName" value="#{personBean.person.firstName}" required="#{true}"/>
+				<h:outputText value="#{msg.gameNameLabel}" />
+				<h:inputText id="name" value="#{gameBean.game.name}" required="#{true}"/>
 
-				<h:outputText value="#{msg.personPinLabel}" />
-				<h:inputText id="pin" value="#{personBean.person.pin}"
-					validator="#{personBean.uniquePin}" required="#{true}">
-					<f:validator validatorId="pinValidator" />
+				<h:outputText value="#{msg.gameUniqueIdLabel}" />
+				<h:inputText id="id" value="#{gameBean.game.uniqueId}"
+					validator="#{gameBean.uniqueId}" required="#{true}">
+					<f:validator validatorId="uniqueGameIdValidator" />
 				</h:inputText>
 
-				<h:outputText value="#{msg.personDobLabel}" />
-				<h:inputText id="dob" value="#{personBean.person.dateOfBirth}">
-				  <f:convertDateTime type="date" pattern="dd.MM.yyyy" />
-				</h:inputText>
+				<h:outputText value="#{msg.gamePegiLabel}" />
+				<h:selectOneRadio id="pegi_" value="#{gameBean.game.pegi}">
+					<f:selectItem id="pegi3" itemLabel="PEGI 3" itemValue="PEGI3" />
+					<f:selectItem id="pegi9" itemLabel="PEGI 9" itemValue="PEGI9" />
+					
+				</h:selectOneRadio>
 
-				<h:outputText value="#{msg.personZipCodeLabel}" />
-				<h:inputText id="zipCode" value="#{personBean.person.zipCode}" />
-
-				<h:outputText value="#{msg.personWeightLabel}" />
-				<h:inputText id="weight" value="#{personBean.person.weight}">
-					<f:validateDoubleRange minimum="20.5" maximum="150.5" />
-				</h:inputText>
+				<h:outputText value="#{msg.gameRateLabel}" />
+				<h:inputText id="rate_" value="#{gameBean.game.rate}" />
+				
+				
 			</h:panelGrid>
 			
-			<h:commandButton value="#{msg.personFormOKButton}"
-				action="#{personBean.addPerson}" />
+			<h:commandButton value="#{msg.gameFormOKButton}"
+				action="#{gameBean.addGame}" />
 
 
 			<h:panelGrid>

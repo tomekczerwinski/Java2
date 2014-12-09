@@ -139,7 +139,7 @@ public class GameFormBean implements Serializable {
 	// Actions
 	public String addGame() {
 		gm.addGame(game);
-		return "showPersons";
+		return "showGames";
 		//return null;
 	}
 
@@ -164,7 +164,7 @@ public class GameFormBean implements Serializable {
 		     
 		   
 		   gm.updateGameFinish(game);
-		      return "showPersons";
+		      return "showGames";
 		   }
 	
 
@@ -188,32 +188,22 @@ public class GameFormBean implements Serializable {
 		}
 	}
 	
-	/*
-	// Multi field validation with <f:event>
-	// Rule: first two digits of PIN must match last two digits of the year of
-	// birth
-	public void validatePinDob(ComponentSystemEvent event) {
 
-		UIForm form = (UIForm) event.getComsg.personPinLabel}mponent();
-		UIInput pin = (UIInput) form.findComponent("pin");
-		UIInput dob = (UIInput) form.findComponent("dob");
+	public void validateRateGame(ComponentSystemEvent event) {
 
-		if (pin.getValue() != null && dob.getValue() != null
-				&& pin.getValue().toString().length() >= 2) {
-			String twoDigitsOfPin = pin.getValue().toString().substring(0, 2);
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(((Date) dob.getValue()));
+		UIForm form = (UIForm) event.getComponent();
+		UIInput rate = (UIInput) form.findComponent("rate");
+		UIInput dystrybutor = (UIInput) form.findComponent("pegi_");
 
-			String lastDigitsOfDob = ((Integer) cal.get(Calendar.YEAR))
-					.toString().substring(2);
 
-			if (!twoDigitsOfPin.equals(lastDigitsOfDob)) {
+		if (dystrybutor.getValue() == "PEGI3") {
+
 				FacesContext context = FacesContext.getCurrentInstance();
 				context.addMessage(form.getClientId(), new FacesMessage(
-						"PIN doesn't match date of birth"));
+						"Too low rating ;("));
 				context.renderResponse();
-			}
+			
 		}
-	}*/
+	}
 }
 

@@ -17,9 +17,9 @@ public class Game {
 	private float cena =0;
 	private String pegi ="";
 	private long uuid = UUID.randomUUID().getLeastSignificantBits();
-	private String uniqueId="";
+	private String uniqueId ="";
 	private Date produceDate = new Date();
-	private int rate=0;
+	private int rate =0;
 
 
 	public String getName() {

@@ -10,18 +10,18 @@
 			<h:panelGrid columns="2">
 
 				<h:outputText value="#{msg.gameNameLabel}" />
-				<h:inputText id="firstName" value="#{gameBean.game.name}"
+				<h:inputText id="name" value="#{gameBean.game.name}"
 					required="#{true}" />
 
 				<h:outputText value="#{msg.gameIdLabel}" />
-				<h:inputText id="id" value="#{gameBean.game.uniqueId}"
+				<h:inputText id="uniqueId" value="#{gameBean.game.uniqueId}"
 					validator="#{gameBean.uniqueId}" required="#{true}">
 					<f:validator validatorId="uniqueGameIdValidator" />
 					<f:ajax execute="@this" render="messages beanState" />
 				</h:inputText>
 
 				<h:outputText value="#{msg.gameProduceDateLabel}" />
-				<h:inputText id="pd" value="#{gameBean.game.produceDate}">
+				<h:inputText id="produceDate" value="#{gameBean.game.produceDate}">
 					<f:convertDateTime type="date" pattern="dd.MM.yyyy" />
 				</h:inputText>
 
@@ -34,7 +34,7 @@
 
 			</h:panelGrid>
 
-			<h:commandButton value="#{msg.personFormOKButton}"
+			<h:commandButton value="#{msg.gameFormOKButton}"
 				action="#{gameBean.addGame}" />
 
 
@@ -44,8 +44,7 @@
 			</h:panelGrid>
 
 			<h:panelGrid id="beanState" columns="2">
-				<h:outputText value="#{msg.gameNameLabel}" />
-				<h:outputText id="nameOutput" value="#{gameBean.game.name}" />
+
 
 				<h:outputText value="#{msg.gameIdLabel}" />
 				<h:outputText id="idOutput" value="#{gameBean.game.uniqueId}" />

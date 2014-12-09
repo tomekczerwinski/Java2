@@ -8,7 +8,7 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
 @FacesValidator("uniqueGameIdValidator")
-public class PinValidator implements Validator {
+public class UniqueGameIdValidator implements Validator {
 
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value)
@@ -16,12 +16,15 @@ public class PinValidator implements Validator {
 		
 		String id = (String) value;
 		
-		if (id.length() != 5) {
+		if (!id.startsWith("PS")) {
+			
 			FacesMessage message = new FacesMessage();
-			message.setDetail("ID musi składać się z 5 cyfr");
-			message.setSummary("ID musi składać się z 5 cyfr");
+			message.setDetail("ID musi zawierac inicjaly docelowej konsoli");
+			message.setSummary("ID musi zawierac inicjaly docelowej konsoli");
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(message);
+			
 		}
+
 	}
 }

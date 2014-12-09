@@ -33,9 +33,19 @@
             <h:outputText value="#{item.pegi}"/>
       </h:column>
       
-            <h:column>
-        <f:facet name="header">#{msg.gameIDDD}</f:facet>
-            <h:outputText value="#{item.uuid}"/>
+      <h:column>
+        <f:facet name="header">#{msg.gameUniqueIdLabel}</f:facet>
+            <h:outputText value="#{item.uniqueId}"/>
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.gameProduceDateLabel}</f:facet>
+            <h:outputText value="#{item.produceDate}"/>
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.gameRateLabel}</f:facet>
+            <h:outputText value="#{item.rate}"/>
       </h:column>
       
       <h:column>

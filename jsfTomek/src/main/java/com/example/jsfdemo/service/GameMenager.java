@@ -18,20 +18,18 @@ public class GameMenager {
 		newGame.setCena(game.getCena());
 		newGame.setPegi(game.getPegi());
 		newGame.setPlatforma(game.getPlatforma());
+		newGame.setDystrybutor(game.getDystrybutor());
+		newGame.setDataWydania(game.getDataWydania());
+		newGame.setRate(game.getRate());
+		newGame.setUniqueId(game.getUniqueId());
+		newGame.setProduceDate(game.getProduceDate());
 
-		
-		/*
-		newGame.setPin(game.getPin());
-		newGame.setDateOfBirth(game.getDateOfBirth());
-		newGame.setMarried(game.isMarried());
-		newGame.setWeight(game.getWeight());
-		newGame.setNumOfChildren(game.getNumOfChildren());
-*/
+
 		db.add(newGame);
 		//Game.lastID=Game.lastID+1;
 	}
 
-	// Removes the person with given PIN
+
 	public void deleteGame(Game game) {
 		Game gameToRemove = null;
 		for (Game p : db) {

@@ -31,7 +31,7 @@ body {
   left: 10px;
   height: 80%;
   width: 200px;
-  background: #FFFFFF;
+  background: yellow;
   top: 90px;
 }
 
@@ -39,7 +39,7 @@ body {
   padding-right: 20px;
   padding-left: 20px;
   padding-bottom: 20px;
-  border: thin solid blue;
+  border: thin solid gray;
   background: #FFFFFF;	
   position:absolute;
   left: 225px; 
