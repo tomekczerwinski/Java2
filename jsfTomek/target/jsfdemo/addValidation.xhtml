@@ -21,14 +21,17 @@
 				</h:inputText>
 
 				<h:outputText value="#{msg.gamePegiLabel}" />
-				<h:selectOneRadio id="pegi_" value="#{gameBean.game.pegi}">
+				<h:selectOneRadio id="pegi" value="#{gameBean.game.pegi}">
 					<f:selectItem id="pegi3" itemLabel="PEGI 3" itemValue="PEGI3" />
 					<f:selectItem id="pegi9" itemLabel="PEGI 9" itemValue="PEGI9" />
 					
 				</h:selectOneRadio>
+				
+				<h:outputText value="#{msg.gameDystrybutorLabel}" />
+				<h:inputText id="dystrybutor" value="#{gameBean.game.dystrybutor}" required="#{true}"/>
 
 				<h:outputText value="#{msg.gameRateLabel}" />
-				<h:inputText id="rate_" value="#{gameBean.game.rate}" />
+				<h:inputText id="rate" value="#{gameBean.game.rate}" />
 				
 				
 			</h:panelGrid>

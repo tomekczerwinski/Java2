@@ -167,6 +167,20 @@ public class GameFormBean implements Serializable {
 		      return "showGames";
 		   }
 	
+	public String saveAction() {
+		 
+		for (Game game : games){
+			game.setEditable(false);
+		}
+		
+		return null;
+	}
+	public String editAction() {
+		Game toEdit = games.getRowData();
+		toEdit.setEditable(true);
+		return null;
+	}
+	
 
 	// Validators
 
@@ -192,11 +206,11 @@ public class GameFormBean implements Serializable {
 	public void validateRateGame(ComponentSystemEvent event) {
 
 		UIForm form = (UIForm) event.getComponent();
-		UIInput rate = (UIInput) form.findComponent("rate");
-		UIInput dystrybutor = (UIInput) form.findComponent("pegi_");
+		UIInput rate = (UIInput) form.findComponent("pegi");
+		UIInput dystrybutor = (UIInput) form.findComponent("dystrybutor");
 
 
-		if (dystrybutor.getValue() == "PEGI3") {
+		if (dystrybutor.getValue().toString().contains("Square-Enix") && rate.getValue().toString().contains("PEGI3")) {
 
 				FacesContext context = FacesContext.getCurrentInstance();
 				context.addMessage(form.getClientId(), new FacesMessage(

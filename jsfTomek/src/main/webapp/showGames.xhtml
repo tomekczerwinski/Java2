@@ -15,22 +15,42 @@
       <h:column>
       
         <f:facet name="header">#{msg.gameNameLabel}</f:facet>
-            <h:outputText value="#{item.name}"/>
+            <h:inputText value="#{item.name}" rendered="#{item.editable}" />
+            <h:outputText value="#{item.name}" rendered="#{not item.editable}" />
       </h:column>
       
       <h:column>
         <f:facet name="header">#{msg.gameCenaLabel}</f:facet>
-            <h:outputText value="#{item.cena}"/>
+            <h:inputText value="#{item.cena}" rendered="#{item.editable}" />
+            <h:outputText value="#{item.cena}" rendered="#{not item.editable}" />
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.gameDystrybutorLabel}</f:facet>
+            <h:inputText value="#{item.dystrybutor}" rendered="#{item.editable}" />
+            <h:outputText value="#{item.dystrybutor}" rendered="#{not item.editable}" />
       </h:column>
       
       <h:column>
         <f:facet name="header">#{msg.gamePlatformaLabel}</f:facet>
-            <h:outputText value="#{item.platforma}"/>
+            <h:selectManyCheckbox id="platforma" value="#{item.platforma}" rendered="#{item.editable}">
+					<f:selectItem id="ps3" itemLabel="Playstation 3" itemValue="PS3" />
+					<f:selectItem id="x360" itemLabel="Xbox 360" itemValue="X360" />
+					<f:selectItem id="wiiu" itemLabel="WiiU" itemValue="WiiU" />
+   			</h:selectManyCheckbox>
+   			<h:outputText value="#{item.platforma}" rendered="#{not item.editable}" />
+      
       </h:column>
       
       <h:column>
         <f:facet name="header">#{msg.gamePegiLabel}</f:facet>
-            <h:outputText value="#{item.pegi}"/>
+            
+            <h:selectOneRadio id="pegi" value="#{item.pegi}" rendered="#{item.editable}" >
+					<f:selectItem id="pegi3" itemLabel="PEGI 3" itemValue="PEGI3" />
+					<f:selectItem id="pegi9" itemLabel="PEGI 9" itemValue="PEGI9" />
+					
+			</h:selectOneRadio>
+			<h:outputText value="#{item.pegi}" rendered="#{not item.editable}" />
       </h:column>
       
       <h:column>
@@ -45,7 +65,10 @@
       
       <h:column>
         <f:facet name="header">#{msg.gameRateLabel}</f:facet>
-            <h:outputText value="#{item.rate}"/>
+           <h:inputText value="#{item.rate}" rendered="#{item.editable}" >
+			</h:inputText>		
+            <h:outputText value="#{item.rate}" rendered="#{not item.editable}" />
+            
       </h:column>
       
       <h:column>
@@ -56,16 +79,21 @@
       
       <h:column>
         <f:facet name="header">#{msg.action}</f:facet>
-        <h:commandLink value="#{msg.actionEdit}" action="#{gameBean.editGame}"/>
+        <h:commandLink value="#{msg.actionEdit}" action="#{gameBean.editAction}"/>
       </h:column>
 
 			<h:panelGrid>
-				<h:messages showDetail="#{true}" showSummary="#{false}" />
+				<h:messages id="messages" showDetail="#{true}" showSummary="#{false}" />
 			</h:panelGrid>
 			
+			
      </h:dataTable>  
-    </h:form>
-      
+     
+    
+    
+    <h:commandButton value="Save Games"
+          action="#{gameBean.saveAction}" />	
+      </h:form>
 	</ui:define>
 	
 </ui:composition>

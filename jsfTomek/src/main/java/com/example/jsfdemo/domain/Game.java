@@ -20,6 +20,7 @@ public class Game {
 	private String uniqueId ="";
 	private Date produceDate = new Date();
 	private int rate =0;
+	private boolean editable=false;
 
 
 	public String getName() {
@@ -207,6 +208,12 @@ public class Game {
 	}
 	public void setRate(int rate) {
 		this.rate = rate;
+	}
+	public boolean isEditable() {
+		return editable;
+	}
+	public void setEditable(boolean editable) {
+		this.editable = editable;
 	}
 
 	}
