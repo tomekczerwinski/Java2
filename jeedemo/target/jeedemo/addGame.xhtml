@@ -31,11 +31,26 @@
 					<f:selectItem id="x360" itemLabel="Xbox 360" itemValue="X360" />
 					<f:selectItem id="wiiu" itemLabel="WiiU" itemValue="WiiU" />
 				</h:selectManyCheckbox>
+
+
 				
-<!-- 				<h:outputText value="#{msg.gameDistributorLabel}" />
-				<h:selectOneMenu value="#{gameBean.game.distributor}">
-					<f:selectItems value="#{gameBean.allDistributors}" var="distributor"
-						itemValue="#{distributor.id}" itemLabel="#{distributor.name}" />
+
+<!-- 				<h:outputText value="#{msg.gameProducerLabel}" />
+				<h:selectOneMenu value="#{gameBean.game.producers}">
+					<f:selectItems value="#{gameBean.allProducers}" var="producer"
+						itemValue="#{producer.id}" itemLabel="#{producer.name}" />
+				</h:selectOneMenu>  -->
+				
+				
+				
+<!-- 				<h:selectOneMenu id="producers" 
+				  converter="#{producerConverterBean}"
+				  value="#{gameBean.game.producers}" 
+				  title="producers" >
+				DONE: update below reference to list of available items
+				    <f:selectItems value="#{gameBean.allProducers}"
+				      var="producer" itemValue="#{producer}" 
+				      itemLabel="#{producer.name}"/>
 				</h:selectOneMenu> -->
 				
 				<rich:calendar value="#{gameBean.game.produceDate}"

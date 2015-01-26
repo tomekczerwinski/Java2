@@ -11,9 +11,11 @@ import javax.inject.Named;
 import com.example.jeedemo.domain.Distributor;
 import com.example.jeedemo.domain.Game;
 import com.example.jeedemo.domain.Person;
+import com.example.jeedemo.domain.Producer;
 import com.example.jeedemo.service.DistributorManager;
 import com.example.jeedemo.service.GameManager;
 import com.example.jeedemo.service.PersonManager;
+import com.example.jeedemo.service.ProducerManager;
 import com.example.jeedemo.service.SellingManager;
 
 @SessionScoped
@@ -32,6 +34,7 @@ public class GameFormBean implements Serializable {
 
 	private long gameId;
 	private long distributorId;
+	private long procucerId;
 
 	@Inject
 	private GameManager gm;
@@ -41,6 +44,9 @@ public class GameFormBean implements Serializable {
 	
 	@Inject
 	private DistributorManager dm;
+	
+	@Inject
+	private ProducerManager pm;
 
 	public Game getGame() {
 		return game;
@@ -62,7 +68,8 @@ public class GameFormBean implements Serializable {
 	// Actions
 	public String addGame() {
 		gm.addGame(game);
-		return "showGames";
+		
+		return "assignDistributor";
 		//return null;
 	}
 
@@ -99,6 +106,10 @@ public class GameFormBean implements Serializable {
 	public List<Distributor> getAllDistributors() {
 		return dm.getDistributors();
 	}
+	
+	public List<Producer> getAllProducers(){
+		return pm.getProducers();
+	}
 	public long getGameId() {
 		return gameId;
 	}
@@ -116,6 +127,12 @@ public class GameFormBean implements Serializable {
 	}
 	public void setDistributor(Distributor distributor) {
 		this.distributor = distributor;
+	}
+	public long getProcucerId() {
+		return procucerId;
+	}
+	public void setProcucerId(long procucerId) {
+		this.procucerId = procucerId;
 	}
 	
 	/*public String disposeGame(){

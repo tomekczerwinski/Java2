@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -29,6 +30,8 @@ public class Person {
 	private String pin = "";
 	private Date birthDate = new Date();
 	private String secondName = "";
+	
+	
 	
 
 	private List<Game> games = new ArrayList<Game>();
@@ -62,7 +65,7 @@ public class Person {
 
 
 	// Be careful here, both with lazy and eager fetch type
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	public List<Game> getGames() {
 		return games;
 	}

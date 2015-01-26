@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import com.example.jeedemo.domain.Distributor;
 import com.example.jeedemo.domain.Game;
 import com.example.jeedemo.domain.Person;
+import com.example.jeedemo.domain.Producer;
 
 
 @Stateless
@@ -32,6 +33,16 @@ public class GameManager {
 
 		em.persist(game);
 		
+	}
+	
+	public void assignGameToProducer(Long gameId, Long producerId) {
+
+		Producer producer = em.find(Producer.class, producerId);
+		Game game = em.find(Game.class, gameId);
+		//game.setSold(true);
+		//producer.setAvilable(false);
+
+		game.getProducers().add(producer);
 	}
 
 	public void deleteGame(Game game) {

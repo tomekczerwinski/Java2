@@ -2,6 +2,7 @@ package com.example.jeedemo.domain;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,6 +21,7 @@ import javax.persistence.TemporalType;
 @NamedQueries({ 
 	@NamedQuery(name = "game.all", query = "Select g from Game g"),
 	@NamedQuery(name = "game.unsold", query = "Select g from Game g where g.sold = false")
+	/*@NamedQuery(name = "game.owns", query = "Select pg from Game_Person pg")*/
 	
 })
 public class Game {
@@ -34,6 +37,8 @@ public class Game {
 	private float cena =0;
 	private String pegi ="";
 	
+	
+	private List<Producer> producers = new ArrayList<Producer>();
 
 	private int rate =0;
 	private boolean editable=false;
@@ -50,6 +55,10 @@ public class Game {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	
+
+
 
 	
 
@@ -112,6 +121,10 @@ public class Game {
     public void setDistributor(Distributor distributor) {
         this.distributor = distributor;
     }
+    
+
+    
+    
 
 
 	public Date getProduceDate() {
@@ -120,6 +133,15 @@ public class Game {
 	public void setProduceDate(Date produceDate) {
 		this.produceDate = produceDate;
 	}
+	
+	@OneToMany(fetch = FetchType.EAGER)
+	public List<Producer> getProducers() {
+		return producers;
+	}
+	public void setProducers(List<Producer> producers) {
+		this.producers = producers;
+	}
+
 	
 
 

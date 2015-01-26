@@ -10,10 +10,12 @@ import javax.inject.Named;
 import com.example.jeedemo.domain.Distributor;
 import com.example.jeedemo.domain.Game;
 import com.example.jeedemo.domain.Person;
+import com.example.jeedemo.domain.Producer;
 import com.example.jeedemo.service.DistributorAssigningManager;
 import com.example.jeedemo.service.DistributorManager;
 import com.example.jeedemo.service.GameManager;
 import com.example.jeedemo.service.PersonManager;
+import com.example.jeedemo.service.ProducerManager;
 import com.example.jeedemo.service.SellingManager;
 
 
@@ -30,9 +32,13 @@ public class DistributorAssignFormBean implements Serializable {
 
 	@Inject
 	private GameManager gm;
+	
+	@Inject
+	private ProducerManager pm;
 
 	private Long gameId;
 	private Long distributorId;
+	private Long producerId;
 	
 	
 	public Long getGameId() {
@@ -58,7 +64,23 @@ public class DistributorAssignFormBean implements Serializable {
 	}
 
 	public String assignGame() {
-		dam.assignGame(distributorId, gameId);
-		return null;
+		dam.assignGame(distributorId, gameId/*, producerId*/);
+		return "assignProducer";
+	}
+	
+	public List<Distributor> getAvailableDistributors() {
+		return dam.getAvailableDistributors();
+	}
+
+	public List<Producer> getAllProducers() {
+		return dam.getAllProducers();
+	}
+
+	
+	public Long getProducerId() {
+		return producerId;
+	}
+	public void setProducerId(Long producerId) {
+		this.producerId = producerId;
 	}
 }

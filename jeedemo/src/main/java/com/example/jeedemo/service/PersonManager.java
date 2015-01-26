@@ -34,8 +34,8 @@ public class PersonManager {
 	public List<Game> getOwnedGames(Person person) {
 		person = em.find(Person.class, person.getId());
 		// lazy loading here - try this code without this (shallow) copying
-		List<Game> cars = new ArrayList<Game>(person.getGames());
-		return cars;
+		List<Game> games = new ArrayList<Game>(person.getGames());
+		return games;
 	}
 
 }

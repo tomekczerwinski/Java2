@@ -32,6 +32,12 @@
       </h:column>
       
       <h:column>
+        <f:facet name="header">#{msg.gameProducerLabel}</f:facet>
+            <h:inputText value="#{item.producers}" rendered="#{item.producer}" />
+            <h:outputText value="#{item.producers}" rendered="#{not item.producer}" />
+      </h:column>
+      
+      <h:column>
         <f:facet name="header">#{msg.gamePlatformaLabel}</f:facet>
             <h:selectManyCheckbox id="platforma" value="#{item.platforma}" rendered="#{item.editable}">
 					<f:selectItem id="ps3" itemLabel="Playstation 3" itemValue="PS3" />

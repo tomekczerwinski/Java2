@@ -24,7 +24,7 @@ public class SellingManager {
 
 		Person person = em.find(Person.class, personId);
 		Game game = em.find(Game.class, gameId);
-		game.setSold(true);
+		//game.setSold(true);
 
 		person.getGames().add(game);
 	}

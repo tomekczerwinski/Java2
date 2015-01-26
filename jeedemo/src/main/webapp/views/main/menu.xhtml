@@ -36,14 +36,32 @@
 		</li>
 		
 		<li>
+		  <h:commandLink action="assignProducer?faces-redirect=true">
+			<h:outputText value="#{msg.gameAssignProducer}" />
+		  </h:commandLink>
+		</li>
+		
+		<li>
 		  <h:commandLink action="showPersons?faces-redirect=true">
 			 <h:outputText value="#{msg.personAllLabel}" />
 		  </h:commandLink>
 		</li>
 		
+<!-- 		<li>
+		  <h:commandLink action="showData?faces-redirect=true">
+			 <h:outputText value="#{msg.gameShowData}" />
+		  </h:commandLink>
+		</li> -->
+		
+		<li>
+		  <h:commandLink action="addProducer?faces-redirect=true">
+			 <h:outputText value="#{msg.addProduer}" />
+		  </h:commandLink>
+		</li>
+		
 		<li>
 		  <h:commandLink action="sell">
-			 <h:outputText value=" Sell car" />
+			 <h:outputText value="#{msg.assignGameToPerson}" />
 		  </h:commandLink>
 		</li>
 		

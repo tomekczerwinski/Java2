@@ -29,7 +29,7 @@ public class DistributorFormBean implements Serializable {
 	
 	public String addDistributor() {
 		dm.addDistributor(distributor);
-		return "showDistributors";
+		return "showGames";
 		//return null;
 	}
 	

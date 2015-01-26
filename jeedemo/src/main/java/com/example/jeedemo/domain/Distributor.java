@@ -14,13 +14,16 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "distributor.all", query = "select d from Distributor d order by d.id")
+    @NamedQuery(name = "distributor.all", query = "select d from Distributor d order by d.id"),
+    @NamedQuery(name = "distributor.avilable", query = "Select d from Distributor d where d.avilable = true")
 })
 public class Distributor implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+	
+	private boolean avilable=true;
 
     private String name;
 
@@ -48,5 +51,13 @@ public class Distributor implements Serializable {
     public String toString() {
         return this.getName();
     }
+
+	public boolean isAvilable() {
+		return avilable;
+	}
+
+	public void setAvilable(boolean avilable) {
+		this.avilable = avilable;
+	}
 
 }
