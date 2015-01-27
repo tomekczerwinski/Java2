@@ -29,6 +29,8 @@ public class DistributorAssigningManager {
 
 		game.setDistributor(distributor);
 		
+		
+		
 	/*	game.getProducers().add(producer);*/
 	}
 

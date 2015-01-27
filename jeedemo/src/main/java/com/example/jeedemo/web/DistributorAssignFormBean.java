@@ -64,7 +64,7 @@ public class DistributorAssignFormBean implements Serializable {
 	}
 
 	public String assignGame() {
-		dam.assignGame(distributorId, gameId/*, producerId*/);
+		gm.assignGameToDistributor(gameId, distributorId);
 		return "assignProducer";
 	}
 	

@@ -10,19 +10,19 @@
 	<ui:define name="content">
 		<h:form id="distributorForm">
 			<h:panelGrid columns="2">
-
-				<h:outputText value=" Distributor " />
-				<h:selectOneMenu value="#{assignDistributorBean.distributorId}">
-					<f:selectItems value="#{assignDistributorBean.distributors}" var="distributor"
-						itemValue="#{distributor.id}" itemLabel="#{distributor.name}" />
-				</h:selectOneMenu>
-
+			
+					
 				<h:outputText value=" Game" />
 				<h:selectOneMenu value="#{assignDistributorBean.gameId}">
 					<f:selectItems value="#{assignDistributorBean.allGames}" var="game"
 						itemValue="#{game.id}" itemLabel="#{game.name}" />
 				</h:selectOneMenu>
 
+				<h:outputText value=" Distributor " />
+				<h:selectOneMenu value="#{assignDistributorBean.distributorId}">
+					<f:selectItems value="#{assignDistributorBean.availableDistributors}" var="distributor"
+						itemValue="#{distributor.id}" itemLabel="#{distributor.name}" />
+				</h:selectOneMenu>
 
 			</h:panelGrid>
 

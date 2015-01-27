@@ -43,8 +43,26 @@ public class GameManager {
 		//producer.setAvilable(false);
 
 		game.getProducers().add(producer);
+		em.merge(game);
 	}
 
+	public void assignGameToDistributor(Long gameId, Long distributorId/*, Long producerId*/) {
+
+		Distributor distributor = em.find(Distributor.class, distributorId);
+		//Producer producer = em.find(Producer.class, producerId);
+		Game game = em.find(Game.class, gameId);
+		//game.setSold(true);
+		
+		distributor.setAvilable(false);
+
+		game.setDistributor(distributor);
+		em.merge(game);
+		
+		
+		
+	/*	game.getProducers().add(producer);*/
+	}
+	
 	public void deleteGame(Game game) {
         game = em.find(Game.class, game.getId());
         em.remove(game);

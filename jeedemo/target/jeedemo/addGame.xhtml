@@ -53,6 +53,7 @@
 				      itemLabel="#{producer.name}"/>
 				</h:selectOneMenu> -->
 				
+				<h:outputText value="#{msg.gameCreationDateLabel}" />
 				<rich:calendar value="#{gameBean.game.produceDate}"
 					id="calendar" datePattern="dd.MM.yyyy" showApplyButton="#{true}"
 					cellWidth="24px" cellHeight="22px" style="width:200px">
